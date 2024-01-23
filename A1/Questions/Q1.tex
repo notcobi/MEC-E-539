@@ -1,26 +1,42 @@
 \section{}
-Consider the transfer function
-\begin{align*}
-    G(s) = \frac{s}{10s - 1}
-\end{align*}
-Sketch the Bode plot of $G(s)$ by hand, using the Bode graph paper provided on eClass, then validate
-your answer using MATLAB's bode command. Please include both plots with your answer.
+Consider two arbitrary vectors $\vec{a}$ and $\vec{b}$. Use index notation to
+show that the following relationship is true:
+
+\begin{equation*}
+    (\vec{a} \times \vec{b}) \cdot (\vec{a} \times \vec{b}) = (\vec{a} \cdot \vec{a})(\vec{b} \cdot \vec{b}) - (\vec{a} \cdot \vec{b})^2
+\end{equation*}
 
 \subsection*{Solution}
-There are two factors, $s$ and $10s - 1$. For $10s-1$, $1/\tau = 0.1$.
+First, recall the definition of the cross product in index notation,
+\begin{equation*}
+    (\vec{a} \times \vec{b}) = \epsilon_{ijk} a_j b_k = C_i
+\end{equation*}
+the definition of the dot product,
+\begin{equation*}
+    (\vec{a} \cdot \vec{b}) = a_i b_i
+\end{equation*}
+an identity for Levi-Civita symbol,
+\begin{equation*}
+    \epsilon_{ijk} \epsilon_{ilm} = \delta_{jl} \delta_{km} - \delta_{jm} \delta_{kl}
+\end{equation*}
+and the Kronecker delta,
+\begin{equation*}
+    \delta_{ij} A_{mj} = A_{mi}
+\end{equation*}
 
-By Matlab,
-\begin{lstlisting}[language=Matlab]
-G = tf([1 0], [10 -1]);
-bode(G);
-\end{lstlisting}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\linewidth]{Questions/Figures/Q1 Matlab Bode.png}
-    \caption{Bode plot of $G(s)$ using Matlab}
-    \label{fig:Q1 Matlab Bode}
-\end{figure}
-
-%put pdf in here
-\includepdf[]{Q1 sketch.pdf}
-
+Then, 
+\begin{align*}
+    (\vec{a} \times \vec{b}) \cdot (\vec{a} \times \vec{b}) &= C_i C_i \\
+    &= (\epsilon_{ijk} a_j b_k) (\epsilon_{ilm} a_l b_m) \\
+    &= \epsilon_{ijk} \epsilon_{ilm} a_j b_k a_l b_m \\
+    &= (\delta_{jl} \delta_{km} - \delta_{jm} \delta_{kl}) a_j b_k a_l b_m \\
+    &= (\delta_{jl} \delta_{km} a_j b_k a_l b_m) - (\delta_{jm} \delta_{kl} a_j b_k a_l b_m) \\
+    &= (a_j b_k a_j b_k) - (a_j b_k a_k b_j) 
+\end{align*}
+because we are dealing with vectors and scalar products, we can utilize commutativity 
+\begin{align*}
+    &= (a_j a_j b_k b_k) - (a_j a_k b_k b_j) \\
+    &= (a_j a_j) (b_k b_k) - (a_j a_k) (b_k b_j) \\
+    &= (\vec{a} \cdot \vec{a}) (\vec{b} \cdot \vec{b}) - (\vec{a} \cdot \vec{b})^2
+\end{align*}
+which matches the RHS. $\square$
