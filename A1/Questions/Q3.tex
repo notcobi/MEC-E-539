@@ -1,0 +1,56 @@
+\section{}
+Consider the general form of momentum balance
+\begin{align}
+    \rho \frac{dv_i}{dt} = \frac{\partial T_{ji}}{\partial x_j} + \rho b_i \label{eq:1}
+\end{align}
+where d/dt is the total derivative; $v_i$ is the velocity; 
+$\rho$ denotes density; $T_{ij}$ is the stress tensor and $b_i$ is a body force. 
+This equation says that inertial and body forces are balanced by the gradients of the stress tensor.
+
+The general form of the stress tensor reads
+\begin{align}
+    T_{ij} = -p \delta_{ij} + \mu \left(\frac{\partial v_i}{\partial x_j} + 
+    \frac{\partial v_j}{\partial x_i} \right) - \frac{2}{3} \mu 
+    \frac{\partial v_k}{\partial x_k} \delta_{ij} + \kappa \left(
+    \frac{\partial v_k}{\partial x_k} \delta_{ij} \right) \label{eq:2}
+\end{align}
+where $p$ is the pressure, $\mu$ is the shear (dynamic) viscosity and $\kappa$ is the 
+dialation viscocity. For each question assume the viscosities $\mu$ and $\kappa$ are constant.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Using equations (1) and (2) derive the general form of Navier-Stokes equations for
+    compressible viscous fluid. Note: only index notation can be used. The final form of
+    equations should be presented in operator (vector) form.
+    \item Assuming $\kappa = 0$, write the full set of Navier-Stokes equations
+    in Cartesian coordinates assuming two-dimensional flow (two equations corresponding to $x$ and $y$
+    directions).
+\end{enumerate}
+
+\subsection*{Solution}
+\subsection{}
+First, deal with the stress tensor.
+\begin{align*}
+    T_{ji} = -p \delta_{ji} + \mu \left(\frac{\partial v_j}{\partial x_i} +
+    \frac{\partial v_i}{\partial x_j} \right) - \frac{2}{3} \mu
+    \frac{\partial v_k}{\partial x_k} \delta_{ji} + \kappa \left(
+    \frac{\partial v_k}{\partial x_k} \delta_{ji} \right)
+\end{align*}
+Differentiate with respect to $x_j$,
+\begin{align*}
+    \frac{\partial T_{ji}}{\partial x_j} &= -\frac{\partial p}{\partial x_j} \delta_{ji}
+    + \mu \left(\frac{\partial^2 v_j}{\partial x_j \partial x_i} + 
+    \frac{\partial^2 v_i}{\partial x_j^2} - 
+    \frac{2}{3} \frac{\partial^2 v_k}{\partial x_j \partial x_k} \delta_{ji}\right) + 
+    \kappa \left(\frac{\partial^2 v_k}{\partial x_j \partial x_k} \delta_{ji} \right)  
+\end{align*}
+Substituting into equation \ref{eq:1},
+\begin{align*}
+    \rho \frac{dv_i}{dt} &= -\frac{\partial p}{\partial x_j} \delta_{ji}
+    + \mu \left(\frac{\partial^2 v_j}{\partial x_j \partial x_i} + 
+    \frac{\partial^2 v_i}{\partial x_j^2} - 
+    \frac{2}{3} \frac{\partial^2 v_k}{\partial x_j \partial x_k} \delta_{ji}\right) + 
+    \kappa \left(\frac{\partial^2 v_k}{\partial x_j \partial x_k} \delta_{ji} \right) + \rho b_i \\
+    \rho \frac{dv_i}{dt} &= -\partial_{j}
+\end{align*}
+
+

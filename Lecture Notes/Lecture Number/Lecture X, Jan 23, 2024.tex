@@ -1,0 +1,156 @@
+\section*{Conservation of Energy (Scalar)}
+
+Energy is a scalar quantity, and therefore it can be identified \& formulated through the conservation of a scalar quantity:
+
+Let's try $\phi = $ scalar,
+\begin{align*}
+    \frac{\partial}{\partial t} \int_{\text{C.V.}} \rho \phi \, dV 
+    + \int_{\text{C.S.}} \rho \phi (\vec{u} \cdot \vec{n}) \, dS &= 
+    \oint_{\text{C.S.}} \Gamma \Grad(\phi) \cdot \vec{n} \, dS + 
+    \int_{\text{C.V.}} \underbrace{q_{\phi}}_{\text{source/sink}} \, dV
+\end{align*}
+
+\begin{align*}
+    \implies 
+    \frac{\partial}{\partial t} (\rho \phi)  
+    + \frac{\partial}{\partial x_j} (\rho \phi u_j) &=
+    \frac{\partial}{\partial x_j} (\Gamma \frac{\partial \phi}{\partial x_j}) + q_{\phi}
+\end{align*}
+Conservation of a scalar (Energy). In vector notation,
+\begin{align*}
+    \partial_{t} (\rho \phi) + \Div (\rho \phi \vec{u}) &= 
+    \Div (\Gamma \Grad (\phi)) + q_{\phi} 
+\end{align*}
+Where
+\begin{itemize}
+    \item $\partial_{t} (\rho \phi)$ is the time rate of change of the scalar quantity $\phi$ (conservative term).
+    \item $\Div (\rho \phi \vec{u})$ is the rate of change due to the flow due to $\vec{u}$ (advection term).
+    \item $\Div (\Gamma \Grad (\phi))$ is the rate of change due to diffusion ($\Gamma$) (diffusion term).
+    \item $q_{\phi}$ is the rate of production (source) or destruction (sink) of $\phi$.
+\end{itemize}
+
+\section*{Chapter 4. Fundamental flows (Simplification)}
+Navier-Stokes equations are highly non-linear PDEs with no exact solutions. However,
+there are fundamental flow dynamics (simplified flows) based on assumptions and approximations that 
+makes the mathematics easier to follow, solve, and interpret.
+
+We are going to look at 4 simplified flow cases:
+\begin{enumerate}
+    \item Incompressible flow ($\rho = \text{constant}$)
+    \item Invicid flow (Euler's flow) ($\mu \to 0$)
+    \item Creeping flow (Stokes flow) ($\text{Re} \ll 100$, inertial forces are negligible)
+    \item Potential flow ($\text{Re} \to 0$, $\text{Ma} \to 0$
+\end{enumerate}
+Let's look at the conservation laws for each:
+\subsection*{Incompressible flow}
+Incompressibility is defined as incapability of a fluid (i.e. liquid) to compress to a smaller size
+under internal/external loads. This, therefore, means that their \textbf{density $\rho$} does
+not change as long as we keep their mass the same.
+
+Typically, liquids are incompressible, but air (gas) can become compressible at special conditions.
+\[
+ \underbrace{\text{Ma}}_{\vec{u} /\text{speed of sound}} > 0.3 \implies \text{compressible}
+\]
+
+Continuity:
+\begin{align*}
+    \cancelto{0 (\text{Incomp})}{\frac{\partial \rho}{\partial t}} + \divergence (\rho \vec{u}) &= 0 \\
+    \implies \divergence \vec{u} &= 0
+\end{align*}
+Momentum:
+\begin{align*}
+    \frac{\partial}{\partial t} (\rho \vec{u}) + \divergence (\rho \vec{u} \vec{u}) &=
+    - \grad P + \cancelto{0, \;\text{continuity}}{\frac{1}{3} \mu \nabla(\divergence \vec{u})} + \mu \laplacian \vec{u} + \rho \vec{b} \\
+\end{align*}
+Expanding the $\divergence (\rho \vec{u} \vec{u})$ term,
+\begin{align*}
+    \divergence (\rho \vec{u} \vec{u}) &= (\divergence \rho \vec{u}) \vec{u}
+        + \rho \vec{u} \cdot \grad \vec{u} \\
+    &= \cancelto{0, \;\text{continuity}}{(\divergence \rho \vec{u})} \vec{u}
+        + \rho \vec{u} \cdot \grad \vec{u} \\
+    &= \rho \vec{u} \cdot \grad \vec{u}
+\end{align*}
+Therefore,
+\begin{align*}
+    \frac{\partial}{\partial t} (\rho \vec{u}) + \rho \vec{u} \cdot \grad \vec{u} &=
+    - \grad P + \mu \laplacian \vec{u} + \rho \vec{b} \\
+    \rho \frac{\partial \vec{u}}{\partial t} + \rho \vec{u} \cdot \grad \vec{u} &=
+    - \grad P + \mu \laplacian \vec{u} + \rho \vec{b} \\
+    \frac{\partial \vec{u}}{\partial t} + \vec{u} \cdot \grad \vec{u} &=
+    -\frac{\grad P}{\rho} + \underbrace{\frac{\mu}{\rho}}_{\nu} \laplacian \vec{u} + \vec{b} \\
+\end{align*}
+
+\subsection*{Invicid flow (Euler's flow)}
+Viscous forces can be important in flows close to a wall, where we have large velocity gradients (Also in wakes).
+As we should before, it is the combination of $\nu$ and $\vec{u}$ that forms the viscous effects in transport of fluids. 
+
+$\implies$ Vorticies $\to$ $\nu$ may be important.
+
+$\hookrightarrow$ if you are far from a surface or regions of large velocity gradients, the implication of viscocity becomes minimal.
+
+$\hookrightarrow$ we quantify the effect of viscocity in the flow using Reynold's Number:
+\begin{align*}
+    \text{Re} = \frac{\rho u \overbrace{L}^{\text{characteristic length}}}{\mu} 
+    = \frac{\text{inertial forces}}{\text{viscous forces}}
+\end{align*}
+if Re $\gg 1000 \implies \mu \to 0$ which means inertial forces dominate the flow 
+(negligible viscous forces).
+
+Continuity:
+\begin{align*}
+    \frac{\partial \rho}{\partial t} + \divergence (\rho \vec{u}) &= 0 
+\end{align*}
+No impact because no $\mu$ term.
+
+Momentum:
+\begin{align*}
+    \frac{\partial}{\partial t} (\rho \vec{u}) + \divergence (\rho \vec{u} \vec{u}) &=
+    - \grad P + \cancelto{0, \;\text{invicid}}{\frac{1}{3}\mu \nabla(\divergence \vec{u})}
+    + \cancelto{}{\mu \laplacian \vec{u}} + \rho \vec{b} \\
+\end{align*}
+\begin{align*}
+    \boxed{\frac{\partial}{\partial t} (\rho \vec{u}) + \divergence (\rho \vec{u} \vec{u}) =
+    - \grad P + \rho \vec{b}}
+\end{align*}
+Note: As we saw in the Navier-Stokes equation, the flow can only be dominated by the 
+\textbf{Pressure} and \textbf{External forces}. This means that the invicid cond. cannot hold if we 
+are dealing with areas of high straining (vorcity and wakes).
+
+Note: Since we are assuring invicid condition, then the flow cannot slow down close to the 
+stationary wall. $\implies$ Slip Boundary Condition.
+
+\subsection*{Creeping flow (Stokes flow)}
+At high re, we just discussed that viscous effects are negligible. Contrarily, at low 
+Re, (Re $\ll 100$) the effect of viscosity \textbf{dominates} the flow. 
+
+$\implies$ Inertial forces are negligible.
+
+\begin{align*}
+    \text{Re} \propto \frac{u D}{\nu} 
+    \begin{cases}
+        \text{Either } u \to 0 \text{and/or} \\
+        D \to 0 
+    \end{cases}
+\end{align*}
+
+Continuity:
+\begin{align*}
+    \frac{\partial \rho}{\partial t} + \divergence (\rho \vec{u}) &= 0
+\end{align*}
+No impact.
+
+Momentum:
+\begin{align*}
+    0 = - \frac{\grad P}{\rho} +  \divergence (\nu \grad \vec{u}) + \vec{b} + \vec{b}
+\end{align*}
+This type of flow is mostly for porous media coating, or nano-fluidics.
+
+\subsection*{Potential flow}
+One of the simpliest flows in fluid mechanics.
+
+Based on two conditions:
+\begin{enumerate}
+    \item Invicid flow ($\mu \to 0$)
+    \item Irrotational flow ($\vec{\omega} \to 0$)
+\end{enumerate}
+provides approximation for initial flow conditions.
