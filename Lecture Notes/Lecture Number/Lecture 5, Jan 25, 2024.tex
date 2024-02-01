@@ -1,0 +1,85 @@
+\section*{Chapter 5: Non-Dimentionalization of the Flow}
+Physically and mathematically, the flow results (dynamics) should not change based on the size of a simulation setup.
+
+$\hookrightarrow$ Most fluid dynamics analyses are completed in a dimensionless framework. This allows for scaling of the real problem. 
+
+$\hookrightarrow$ If the scaled conditions are maintained (i.e. Reynold's Number is the same), CFD simulations should be independent from geometrical or scalable physical parameters.
+
+Note: The scalability of the flow condition holds only if the main flow behavior/dynamics is the same in terms of Re, $\rho$, $\mu$, \dots
+
+Now, we return to our governing equations and discuss means to make them non-dimentionalized using normalization factors.
+
+For example, velocity can be normalized using the freestream condition,
+\begin{equation*}
+    u_i = u_i^* u_{\infty} \implies u_i^* = \frac{u_i}{u_{\infty}}
+\end{equation*}
+where $u_{\infty}$ is the freestream velocity.
+
+Similarly, 
+\begin{equation*}
+    t_0 = \frac{C}{u_{\infty}} \implies t^* = \frac{t}{t_0} = \frac{u_{\infty} t}{C}
+\end{equation*}
+
+For pressure,
+\begin{equation*}
+    P_{\text{dyn}} = \frac{1}{2} \rho u_{\infty}^2 \implies P^* = \frac{P}{P_{\text{dyn}}} = \frac{2 P}{\rho u_{\infty}^2}
+\end{equation*}
+
+and it is given that 
+\begin{equation*}
+    X_{i}^* = \frac{X_i}{C} \implies X_i = X_i^* C
+\end{equation*}
+
+$\hookrightarrow$ Now, let's begin with the continuity equation (incompressible)
+\begin{align*}
+    \frac{\partial u_i}{\partial x_i} &= 0 
+\end{align*}
+Substituting $u_i$ and $x_i$ with their non-dimensionalized counterparts,
+\begin{align*}
+    \frac{\partial u_i^* u_{\infty}}{\partial x_i^* C} &= 0 \\
+    \cancel{\frac{u_{\infty}}{C}} \frac{\partial u_i^*}{\partial x_i^*} &= 0 \\
+    \frac{\partial u_i^*}{\partial x_i^*} &= 0
+\end{align*}
+
+$\hookrightarrow$ Now, let's look at the momentum equation (incompressible)
+\begin{align*}
+    \frac{\partial u_i}{\partial t} + \frac{\partial (u_i u_j)}{\partial x_j} &= - \frac{1}{\rho} \frac{\partial P}{\partial x_i} + \nu \frac{\partial^2 u_i}{\partial x_j \partial x_j} + b_i
+\end{align*}
+Then,
+\begin{align*}
+    \frac{\partial (u_i^* u_{\infty})}{\partial (t^* t_0)} + \frac{\partial (u_i^* u_j^* u_{\infty}^2)}{\partial (x_j^* C)} 
+    &= - \frac{1}{\rho} \frac{\partial (P^* P_{\text{dyn}})}{\partial (x_i^* C)} + \nu \frac{\partial^2 (u_i^* u_{\infty})}{\partial (x_j^* C) \partial (x_j^* C)} + g b_i^* \\
+    \frac{\partial (u_i^* u_{\infty})}{\partial (t^* t_0)} + \frac{\partial (u_i^* u_j^* u_{\infty}^2)}{\partial (x_j^* C)}
+    &= - \frac{1}{\rho} \frac{\partial (P^* P_{\text{dyn}})}{\partial (x_i^* C)} + \nu \frac{\partial^2 (u_i^* u_{\infty})}{\partial (x_j^* C) \partial (x_j^* C)} + g b_i^* \\
+    \left(\frac{u_{\infty}}{t_0}\right) \frac{\partial u_i^*}{\partial t^*} + \left(\frac{u_{\infty}^2}{C}\right) \frac{\partial (u_i^* u_j^*)}{\partial x_j^*}
+    &= - \frac{1}{\rho} \left(\frac{\frac{1}{2}\rho u_{\infty}^2}{C}\right) \frac{\partial P^*}{\partial x_i^*} + \left(\frac{\nu u_{\infty}}{C^2}\right) \frac{\partial^2 u_i^*}{\partial x_j^* \partial x_j^*} + g b_i^* 
+\end{align*}
+Now multiply by $C/u_{\infty}^2$,
+\begin{align*}
+    \frac{C}{u_\infty t_0}\frac{\partial u_i^*}{\partial t^*} + \frac{\partial (u_i^* u_j^*)}{\partial x_j^*}
+    &= - \frac{1}{2} \frac{\partial P^*}{\partial x_i} + \frac{\nu}{u_{\infty} C} \frac{\partial^2 u_i^*}{(\partial x_j^*)^2} + \frac{g C}{u_{\infty}^2} b_i^*
+\end{align*}
+Therefore we obtain a number of important characteristic flow quantities:
+\begin{enumerate}
+    \item Strouhal Number: This dimentionless number is wkd as a number to describe flow unsteadiness (periodicity). Hence, $f_i = 1/t_i$ in the frequency of unsteadiness, which relates to vortex formulation frequency, flapping wings, etc.
+    \begin{equation*}
+        \text{St} = \frac{f_i C}{u_{\infty}} = \frac{C}{\underbrace{P_i}_{\text{Period}} u_{\infty}}
+    \end{equation*}
+    \item Reynold's Number: Describes the ratio of inertial to viscous effects.
+    \begin{equation*}
+        \text{Re} = \frac{\rho u_{\infty} C}{\mu} = \frac{u_{\infty} C}{\nu}
+    \end{equation*}
+    \item Froude Number: Describes the ratio of inertial to external fields in the flow
+    \begin{equation*}
+        \text{Fr} = \frac{u_{\infty}}{\sqrt{Cg}}
+    \end{equation*}
+    This enables us to understand if the flow is driven by inertial forces or external effects (gravity)
+\end{enumerate}
+From the energy equation, we will get the Peclet Number, which describes the ratio of convection to diffusion effects.
+\begin{equation*}
+    \text{Pe} = \frac{C u_{\infty}}{k/\rho C_p}
+\end{equation*}
+
+
+ %questions for after class
+    %1. what happened to the time term in the inviscid continuity equation?
