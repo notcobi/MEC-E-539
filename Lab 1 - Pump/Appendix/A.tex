@@ -1,0 +1,52 @@
+\section{Appendix: Arduino Uno Accuracy}
+\label{sec:appendix-arduino-accuracy}
+Table \ref{tab:arduino-accuracy-appendix} summarizes the range, resolution, repeatability, accuracy, and manufacturer's accuracy for various ranges of the 
+Arduino Uno. Sample calculations for the 5V reference voltage are shown below. Note, the manufacturer's accuracy is $\pm$ 2 LSBs.
+
+\begin{align*}
+    \text{Resolution} &= \frac{V_{\text{ru}} - V_{\text{rl}}}{2^n} \\
+    &= \frac{5.000 - 0.000}{2^{10}} \\
+    &= \boxed{\qty[per-mode=symbol]{4.883}{\milli\volt\per\LSB}} \\
+    \text{Repeatability} &= \max({\text{Max Deviation}}) \\
+    &= \max(\langle 5.00, 0.00, 9.00, 44.00 \rangle) \\
+    &= \boxed{\qty{44.00}{\milli\volt}} \\
+    \text{Accuracy} &= \max({\text{Deviation}}) \\
+    &= \max\left(
+        \tiny	
+        \begin{bmatrix}
+            -0.009 & -0.009 & -0.009 & -0.009 & -0.009 & -0.009 & -0.009 & -0.009 & -0.004 & -0.009 \\
+            0.001 & 0.001 & 0.001 & 0.001 & 0.001 & 0.001 & 0.001 & 0.001 & 0.001 & 0.001 \\
+            0.016 & 0.021 & 0.012 & 0.016 & 0.012 & 0.012 & 0.016 & 0.016 & 0.012 & 0.016 \\
+            0.02 & 0.024 & 0.02 & 0.024 & 0.01 & 0.02 & \textbf{0.054} & 0.024 & 0.034 & 0.02 \\
+        \end{bmatrix}
+    \right) \nonumber \\
+    &= \boxed{\qty{54.00}{\milli\volt}}\\
+    \text{Manuf. Acc.} &= \qty{2}{\LSB} \times \text{Resolution} \\
+    &= \boxed{\qty{9.766}{\milli\volt}}
+\end{align*}
+
+\noindent For significant figures, since the range is given to 3 decimal places, the resolution is given to 3 decimal places, more often
+than not, the number of significant figures is 4. This is because addition and subtraction do not take into account the number of significant figures
+but rather the number of decimal places.
+
+\begin{table}[ht]
+    \caption{Range, Resolution, Repeatability, Accuracy, and Manufacturer's Accuracy for Various Ranges of the Arduino Uno}
+    \label{tab:arduino-accuracy-appendix}
+    \centering
+    \small
+    \begin{tabular}{lccccc}
+        \toprule
+        Arduino Config. & Range & Resolution & Repeatability & Acc. & Manuf. Acc. \\
+        & (V) & (mV/LSB) & (mV) & (mV) & (mV) \\
+        \midrule
+        5V Ref. & 0.000 - 5.000 & 4.883 & 44.00 & 54.00 & 9.766 \\
+        3.3V Ref. & 0.000 - 3.300 & 3.223 & 4.000 & 17.00 & 6.445 \\
+        3.3V Ref., 10x VDiv & 0.00 - 33.00 & 32.23 & 32.00 & 83.00 & 64.45 \\
+        3.3V Ref., [-10, 10]V & -10.00 - 10.00 & 19.53 & 0.000 & 24.00 & 39.06 \\
+        3.3V Ref., 10x Amp. & 0.000 - 0.330 & 0.3223 & 0.000 & 0.000 & 0.6445 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\FloatBarrier
+\phantom{a}
