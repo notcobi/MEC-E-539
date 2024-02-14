@@ -1,0 +1,67 @@
+\section{}
+Consider the heat transfer in incompressible flow of Newtonian fluid. 
+The following form of energy conservation equation holds for this case:
+\begin{equation*}
+    \rho C_p \left( \frac{\partial T}{\partial t} + \vec{v} \cdot \nabla T \right) 
+    = k \nabla^2 T + \frac{\mu}{2} \Phi^2 
+\end{equation*}
+where $T$ is the temperature, $t$ is time, $\vec{v}$ is the velocity, $\rho$ is density,
+$C_p$ is the heat capacity, $k$ is the thermal conductivity, $\mu$ is the shear 
+(dynamic) viscosity, and $\Phi_{ij}$ is the rate of shear tensor defined as
+\begin{equation*}
+    \Phi_{ij} = \frac{\partial v_i}{\partial x_j} + \frac{\partial v_j}{\partial x_i}
+\end{equation*}
+\begin{enumerate}[label=(\alph*)]
+    \item What is the physical interpretation of the following terms: 
+    $\rho C_p (\vec{v} \cdot \nabla T)$, $k \nabla^2 T$ and $\frac{\mu}{2} \Phi^2$.
+    \item Write equation (3) in Cartesian coordinates assuming three-dimensional flow. 
+    Explain all the steps how the term $\Phi^2_{ij}$ unfolds.
+\end{enumerate}
+
+\subsection*{Solution}
+\subsection{}
+\begin{enumerate}
+    \item $\rho C_p (\vec{v} \cdot \nabla T)$ is the rate of change of energy
+    due to convection. 
+    \item $k \nabla^2 T$ is the rate of change of energy due to conduction.
+    \item $\frac{\mu}{2} \Phi^2$ is the rate of change of energy due to viscous
+    dissipation (friction).
+\end{enumerate}
+\subsection{}
+First deal with $\Phi^2_{ij}$,
+\begin{align*}
+    \Phi^2_{ij} 
+    &= \sum_{i, j}^{3} \Phi_{ij} \Phi_{ij} \\
+\end{align*}
+Then,
+\begin{align*}
+    \Phi^2_{ij} 
+    &= \Phi_{11} \Phi_{11} + \Phi_{21} \Phi_{21} + \Phi_{31} \Phi_{31} \\
+    &\quad+ \Phi_{12} \Phi_{12} + \Phi_{22} \Phi_{22} + \Phi_{32} \Phi_{32} \\
+    &\quad+ \Phi_{13} \Phi_{13} + \Phi_{23} \Phi_{23} + \Phi_{33} \Phi_{33} \\
+\end{align*}
+In Cartesian coordinates, assuming $v_i = (u, v, w)$, $x_i = (x, y, z)$,
+\begin{align*}
+    \Phi^2_{ij}
+    &= \left(\frac{\partial u}{\partial x} + \frac{\partial u}{\partial x}\right)^2 
+    + \left(\frac{\partial v}{\partial x} + \frac{\partial u}{\partial y}\right)^2
+    + \left(\frac{\partial w}{\partial x} + \frac{\partial u}{\partial z}\right)^2 \\
+    &\quad + \left(\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x}\right)^2
+    + \left(\frac{\partial v}{\partial y} + \frac{\partial v}{\partial y}\right)^2
+    + \left(\frac{\partial w}{\partial y} + \frac{\partial v}{\partial z}\right)^2 \\
+    &\quad+ \left(\frac{\partial u}{\partial z} + \frac{\partial w}{\partial x}\right)^2
+    + \left(\frac{\partial v}{\partial z} + \frac{\partial w}{\partial y}\right)^2
+    + \left(\frac{\partial w}{\partial z} + \frac{\partial w}{\partial z}\right)^2 \\
+    &= 4 \left(\frac{\partial u}{\partial x}\right)^2 + 4 \left(\frac{\partial v}{\partial x}\right)^2 + 4 \left(\frac{\partial w}{\partial x}\right)^2 \\
+    &\quad+ 2\left(\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x}\right)^2 + 2\left(\frac{\partial v}{\partial y} + \frac{\partial v}{\partial y}\right)^2 
+    + 2\left(\frac{\partial w}{\partial y} + \frac{\partial v}{\partial z}\right)^2 \\
+\end{align*}
+Now the rest of the terms,
+\begin{empheq}[box=\widefbox]{align*}
+    \rho C_p \left[ \frac{\partial T}{\partial t} + 
+    \left(u\frac{\partial T}{\partial x} + v\frac{\partial T}{\partial y} + w\frac{\partial T}{\partial z}\right) \right]
+    &= k \left( \frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} + \frac{\partial^2 T}{\partial z^2} \right) \\
+    &\quad+ \frac{\mu}{2} \left[ 4 \left(\frac{\partial u}{\partial x}\right)^2 + 4 \left(\frac{\partial v}{\partial x}\right)^2 + 4 \left(\frac{\partial w}{\partial x}\right)^2 \right.\\
+    &\quad\quad+ 2\left(\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x}\right)^2 + 2\left(\frac{\partial v}{\partial y} + \frac{\partial v}{\partial y}\right)^2 \\
+    &\quad\quad\left.+ 2\left(\frac{\partial w}{\partial y} + \frac{\partial v}{\partial z}\right)^2 \right]
+\end{empheq}

@@ -1,0 +1,130 @@
+\section{}
+Consider the general form of momentum balance
+\begin{align}
+    \rho \frac{dv_i}{dt} = \frac{\partial T_{ji}}{\partial x_j} + \rho b_i \label{eq:1}
+\end{align}
+vhere d/dt is the total derivative; $v_i$ is the velocity; 
+$\rho$ denotes density; $T_{ij}$ is the stress tensor and $b_i$ is a body force. 
+This equation says that inertial and body forces are balanced by the gradients of the stress tensor.
+
+The general form of the stress tensor reads
+\begin{align}
+    T_{ij} = -p \delta_{ij} + \mu \left(\frac{\partial v_i}{\partial x_j} + 
+    \frac{\partial v_j}{\partial x_i} \right) - \frac{2}{3} \mu 
+    \frac{\partial v_k}{\partial x_k} \delta_{ij} + \kappa \left(
+    \frac{\partial v_k}{\partial x_k} \delta_{ij} \right) \label{eq:2}
+\end{align}
+vhere $p$ is the pressure, $\mu$ is the shear (dynamic) viscosity and $\kappa$ is the 
+dialation viscocity. For each question assume the viscosities $\mu$ and $\kappa$ are constant.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Using equations (1) and (2) derive the general form of Navier-Stokes equations for
+    compressible viscous fluid. Note: only index notation can be used. The final form of
+    equations should be presented in operator (vector) form.
+    \item Assuming $\kappa = 0$, vrite the full set of Navier-Stokes equations
+    in Cartesian coordinates assuming tvo-dimensional flov (tvo equations corresponding to $x$ and $y$
+    directions).
+\end{enumerate}
+
+\subsection*{Solution}
+\subsection{}
+First, deal vith the stress tensor.
+\begin{align*}
+    T_{ji} = -p \delta_{ji} + \mu \left(\frac{\partial v_j}{\partial x_i} +
+    \frac{\partial v_i}{\partial x_j} \right) - \frac{2}{3} \mu
+    \frac{\partial v_k}{\partial x_k} \delta_{ji} + \kappa \left(
+    \frac{\partial v_k}{\partial x_k} \delta_{ji} \right)
+\end{align*}
+Differentiate vith respect to $x_j$,
+\begin{align*}
+    \frac{\partial T_{ji}}{\partial x_j} &= -\frac{\partial p}{\partial x_j} \delta_{ji}
+    + \mu \left(\frac{\partial^2 v_j}{\partial x_j \partial x_i} + 
+    \frac{\partial^2 v_i}{\partial x_j^2} - 
+    \frac{2}{3} \frac{\partial^2 v_k}{\partial x_j \partial x_k} \delta_{ji}\right) + 
+    \kappa \left(\frac{\partial^2 v_k}{\partial x_j \partial x_k} \delta_{ji} \right)  
+\end{align*}
+Substituting into equation \ref{eq:1},
+\begin{align*}
+    \rho \frac{\partial v_i}{\partial t} + \rho v_j \frac{\partial v_i}{\partial x_j} 
+    &= -\frac{\partial p}{\partial x_j} \delta_{ji}
+    + \mu \left(\frac{\partial^2 v_j}{\partial x_j \partial x_i} + 
+    \frac{\partial^2 v_i}{\partial x_j^2} - 
+    \frac{2}{3} \frac{\partial^2 v_k}{\partial x_j \partial x_k} \delta_{ji}\right) + 
+    \kappa \left(\frac{\partial^2 v_k}{\partial x_j \partial x_k} \delta_{ji} \right) + \rho b_i \\
+    &= -\frac{\partial p}{\partial x_i} + \mu \left(\frac{\partial^2 v_j}{\partial x_j \partial x_i} +
+    \frac{\partial^2 v_i}{\partial x_j^2} - \frac{2}{3} \frac{\partial^2 v_k}{\partial x_i \partial x_k} 
+    \right) + \kappa \left(\frac{\partial^2 v_k}{\partial x_i \partial x_k} \right) + \rho b_i
+\end{align*}
+Converting the RHS to vector form,
+\begin{align*}
+    \text{RHS} &=
+    -\nabla p + \mu \left[\nabla (\nabla \cdot \vec{v}) + \nabla^2 \vec{v} - 
+    \frac{2}{3} \nabla (\nabla \cdot \vec{v}) \right] 
+    + \kappa \nabla (\nabla \cdot \vec{v}) + \rho \vec{b} \\
+    &= -\nabla p + \mu \nabla^2 \vec{v} 
+    + \left[\frac{\mu}{3} + \kappa\right] \nabla (\nabla \cdot \vec{v}) + \rho \vec{b}
+\end{align*}
+Converting the LHS to vector form,
+\begin{align*}
+    \text{LHS} = \rho \left(\frac{\partial \vec{v}}{\partial t} 
+    + (\vec{v} \cdot \nabla) \vec{v} \right)
+\end{align*}
+Combining the LHS and RHS,
+\begin{align*}
+    \boxed{
+    \rho \left(\frac{\partial \vec{v}}{\partial t}
+    + (\vec{v} \cdot \nabla) \vec{v} \right) = -\nabla p + \mu \nabla^2 \vec{v}
+    + \left[\frac{\mu}{3} + \kappa\right] \nabla (\nabla \cdot \vec{v}) + \rho \vec{b}
+    }
+\end{align*}
+
+\subsection{}
+Assuming $\kappa = 0$, the equation reduces to 
+\begin{align*}
+    \rho \left(\frac{\partial \vec{v}}{\partial t}
+    + (\vec{v} \cdot \nabla) \vec{v} \right) = -\nabla p + \mu \nabla^2 \vec{v}
+    + \frac{\mu}{3} \nabla (\nabla \cdot \vec{v}) + \rho \vec{b}
+\end{align*}
+In Cartesian coordinates (x, y), assuming $\vec{v} = (u, v)$ and $\vec{b} = (b_x, b_y)$.
+In the x-direction,
+\begin{align*}
+    \boxed{
+    \rho \left(\frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} 
+    + v \frac{\partial u}{\partial y} \right) = -\frac{\partial p}{\partial x} 
+    + \mu \left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right)
+    + \frac{\mu}{3} \left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 v}{\partial x \partial y} \right)
+    + \rho b_x 
+    }
+\end{align*}
+In the y-direction,
+\begin{align*}
+    \boxed{
+    \rho \left(\frac{\partial v}{\partial t} + u \frac{\partial v}{\partial x} 
+    + v \frac{\partial v}{\partial y} \right) = -\frac{\partial p}{\partial y} 
+    + \mu \left(\frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} \right)
+    + \frac{\mu}{3} \left(\frac{\partial^2 u}{\partial x \partial y} + \frac{\partial^2 v}{\partial y^2} \right)
+    + \rho b_y 
+    }
+\end{align*}
+
+% Note, expansion of $\nabla (\nabla \cdot \vec{v})$ in Cartesian coordinates,
+% \begin{align*}
+%     \nabla (\nabla \cdot \vec{v}) &= \nabla \left(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} \right) \\
+%     &= \begin{bmatrix}
+%         \frac{\partial}{\partial x} \left(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} \right) \\
+%         \frac{\partial}{\partial y} \left(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} \right)
+%     \end{bmatrix} 
+% \end{align*}
+% also expand $\nabla \cdot (\nabla \vec{v})$ in Cartesian coordinates,
+% \begin{align*}
+%     \nabla \cdot (\nabla \vec{v}) &= \nabla \cdot 
+%     \begin{bmatrix}
+%         \frac{\partial u}{\partial x} & \frac{\partial v}{\partial x} \\
+%         \frac{\partial u}{\partial y} & \frac{\partial v}{\partial y}
+%     \end{bmatrix} \\
+%     &= \begin{bmatrix}
+%         \frac{\partial}{\partial x} \left(\frac{\partial u}{\partial x} \right) + \frac{\partial}{\partial y} \left(\frac{\partial v}{\partial x} \right) \\
+%         \frac{\partial}{\partial x} \left(\frac{\partial u}{\partial y} \right) + \frac{\partial}{\partial y} \left(\frac{\partial v}{\partial y} \right)
+%     \end{bmatrix} \\
+% \end{align*}
+% we have $\partial_{i} \partial_{j} a_i$

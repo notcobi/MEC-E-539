@@ -1,0 +1,50 @@
+% Question 2. [15 Points] Write down the momentum conservation equations in Cartesian
+% coordinates. Simplify them using conditions outlined in bullet points.
+
+\section{}
+\textit{Write down the momentum conservation equations in Cartesian coordinates. Simplify them using conditions outlined in bullet points.}
+
+\begin{table}[h]
+    \centering
+    \caption{Assumptions and simplifying consequences}
+    \begin{tabular}{cc}
+        \hline
+        \textbf{Assumption} & \textbf{Consequence} \\
+        \hline
+        Steady State (S.S.) & $\frac{\partial}{\partial t} = 0$ \\
+        Incompressible & $\rho = \text{constant}$ \\
+        Newtonian & $\mu = \text{constant}$ \\
+        2D Flow & $u_z = \partial_{z} = 0$ \\
+        Parallel & $u_y = 0$ \\
+        Fully developed (F.D.) & $v_x = v_x(y)$, $T = T(y)$, $\partial_{x} = 0$ \\
+        \hline
+    \end{tabular}
+    \label{tab:assumptions}
+\end{table}
+\FloatBarrier
+We begin with the continuity equation,
+\begin{align*}
+    \cancelto{\text{S.S.}}{\frac{\partial \rho}{\partial t}} + \vec{u} \cdot \cancelto{\text{Incmp.}}{ \nabla \rho} +\rho (\nabla \cdot \vec{u}) &= 0
+\end{align*}
+this simplifies to,
+\begin{align*}
+    \frac{\partial}{\partial x} u_x + \frac{\partial}{\partial y} u_y + \frac{\partial}{\partial z} u_z &= 0 
+\end{align*}
+We begin in the x-direction with the momentum equation,
+\begin{align*}
+    \cancelto{\text{S.S.}}{\frac{\partial}{\partial t} (\rho u_x)} + \frac{\partial}{\partial x_j} (\rho u_x u_j) &= \cancelto{\text{F.D.}}{-\frac{\partial P}{\partial x}} + \frac{\partial}{\partial x_j} \left[ \mu \left( \frac{\partial u_x}{\partial x_j} + \frac{\partial u_j}{\partial x_x} \right) \right] - \frac{\partial}{\partial x} \left(\frac{2}{3} \mu \frac{\partial u_k}{\partial x_k} \right) + \rho b_x
+\end{align*}
+which simplifies to,
+\begin{align*}
+    \rho \left(\cancelto{\text{F.D.}}{\frac{\partial}{\partial x}} (u_x^2) + \cancelto{\text{Par.}}{\frac{\partial}{\partial y}} (u_x u_y) + \cancelto{\text{2D}}{\frac{\partial}{\partial z}} (u_x u_z) \right) &=  \mu \left(\cancelto{\text{Par.}}{\frac{\partial^2 u_x}{\partial y^2}} + \cancelto{\text{2D}}{\frac{\partial^2 u_x}{\partial z^2}} \right) + \rho b_x \\
+    \Aboxed{0 &= b_x}
+\end{align*}
+Next, we move to the y-direction,
+\begin{align*}
+    \cancelto{\text{S.S.}}{\frac{\partial}{\partial t} (\rho u_y)} + \frac{\partial}{\partial x_j} (\rho u_y u_j) &= \cancelto{\text{F.D.}}{-\frac{\partial P}{\partial y}} + \frac{\partial}{\partial x_j} \left[ \mu \left( \frac{\partial u_y}{\partial x_j} + \frac{\partial u_j}{\partial x_y} \right) \right] - \frac{\partial}{\partial y} \left(\frac{2}{3} \mu \frac{\partial u_k}{\partial x_k} \right) + \rho b_y
+\end{align*}
+which simplifies to,
+\begin{align*}
+    \rho \left(\cancelto{\text{Par.}}{\frac{\partial}{\partial x}} (u_x u_y) + \cancelto{\text{F.D.}}{\frac{\partial}{\partial y}} (u_y^2) + \cancelto{\text{2D}}{\frac{\partial}{\partial z}} (u_y u_z) \right) &=  \mu \left(\cancelto{\text{Par.}}{\frac{\partial^2 u_y}{\partial x^2}} + \cancelto{\text{2D}}{\frac{\partial^2 u_y}{\partial z^2}} \right) + \rho b_y \\
+    \Aboxed{0 &= b_y}
+\end{align*}
