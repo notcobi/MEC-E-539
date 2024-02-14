@@ -3,7 +3,7 @@
 
 \section{}
 \textit{Write down the momentum conservation equations in Cartesian coordinates. Simplify them using conditions outlined in bullet points.}
-
+\section*{Solution}
 \begin{table}[h]
     \centering
     \caption{Assumptions and simplifying consequences}
@@ -14,12 +14,14 @@
         Steady State (S.S.) & $\frac{\partial}{\partial t} = 0$ \\
         Incompressible & $\rho = \text{constant}$ \\
         Newtonian & $\mu = \text{constant}$ \\
-        2D Flow & $u_z = \partial_{z} = 0$ \\
-        Parallel & $u_y = 0$ \\
-        Fully developed (F.D.) & $v_x = v_x(y)$, $T = T(y)$, $\partial_{x} = 0$ \\
+        2D Flow & $u_z = 0$, $\partial_z \vec{u} = 0$ \\
+        Parallel & $u_y = 0$, $\partial_y \vec{u} = 0$ \\
+        Fully developed in $x$ (F.D.) & $v_x = v_x(y)$, \\
+        Constant Pressure in $x$ (C.P.) & $\frac{\partial P}{\partial x} = 0$ \\
+        Gravity in $z$ & $\vec{b} = -g \hat{k}$ \\
         \hline
     \end{tabular}
-    \label{tab:assumptions}
+    \label{tab:Q2assumptions}
 \end{table}
 \FloatBarrier
 We begin with the continuity equation,
@@ -28,23 +30,48 @@ We begin with the continuity equation,
 \end{align*}
 this simplifies to,
 \begin{align*}
-    \frac{\partial}{\partial x} u_x + \frac{\partial}{\partial y} u_y + \frac{\partial}{\partial z} u_z &= 0 
+    \frac{\partial}{\partial x} u_x + \cancelto{\text{Par.}}{\frac{\partial}{\partial y} u_y} + \cancelto{\text{2D}}{\frac{\partial}{\partial z} u_z} &= 0 \\
+    \implies \Aboxed{\frac{\partial u_x}{\partial x} &= 0}
 \end{align*}
-We begin in the x-direction with the momentum equation,
+Next, in the x-direction with the momentum equation,
 \begin{align*}
-    \cancelto{\text{S.S.}}{\frac{\partial}{\partial t} (\rho u_x)} + \frac{\partial}{\partial x_j} (\rho u_x u_j) &= \cancelto{\text{F.D.}}{-\frac{\partial P}{\partial x}} + \frac{\partial}{\partial x_j} \left[ \mu \left( \frac{\partial u_x}{\partial x_j} + \frac{\partial u_j}{\partial x_x} \right) \right] - \frac{\partial}{\partial x} \left(\frac{2}{3} \mu \frac{\partial u_k}{\partial x_k} \right) + \rho b_x
+    \cancelto{\text{S.S.}}{\frac{\partial}{\partial t} (\rho u_x)} + \frac{\partial}{\partial x_j} (\rho u_x u_j) &= \cancelto{\text{C.P.}}{-\frac{\partial P}{\partial x}} + \frac{\partial}{\partial x_j} \left[\mu \left( \frac{\partial u_x}{\partial x_j} + \frac{\partial u_j}{\partial x_x} \right) \right] - \frac{\partial}{\partial x} \left(\frac{2}{3} \mu \frac{\partial u_k}{\partial x_k} \right) + \rho b_x
 \end{align*}
-which simplifies to,
+expanding the index notation and simplifying,
 \begin{align*}
-    \rho \left(\cancelto{\text{F.D.}}{\frac{\partial}{\partial x}} (u_x^2) + \cancelto{\text{Par.}}{\frac{\partial}{\partial y}} (u_x u_y) + \cancelto{\text{2D}}{\frac{\partial}{\partial z}} (u_x u_z) \right) &=  \mu \left(\cancelto{\text{Par.}}{\frac{\partial^2 u_x}{\partial y^2}} + \cancelto{\text{2D}}{\frac{\partial^2 u_x}{\partial z^2}} \right) + \rho b_x \\
-    \Aboxed{0 &= b_x}
+    \rho \left(\cancelto{\text{Cont.}}{\frac{\partial}{\partial x}} (u_x^2) + \cancelto{\text{Par.}}{\frac{\partial}{\partial y}} (u_x u_y) + \cancelto{\text{2D}}{\frac{\partial}{\partial z}} (u_x u_z) \right) &=  \frac{\partial}{\partial x} \left[\mu \cancelto{\text{Cont.}}{\left(\frac{\partial u_x}{\partial x} + \frac{\partial u_x}{\partial x} \right)} \right] \\
+    &\quad + \frac{\partial}{\partial y} \left[\mu \left(\frac{\partial u_x}{\partial y} + \cancelto{\text{Par.}}{\frac{\partial u_y}{\partial x}} \right) \right] + \frac{\partial}{\partial z} \left[\mu \left(\cancelto{\text{2D}}{\frac{\partial u_x}{\partial z} + \frac{\partial u_z}{\partial x}} \right) \right] \\
+    &\quad - \frac{\partial}{\partial x} \left[\frac{2}{3} \mu \cancelto{\text{Cont.}}{\left(\frac{\partial u_x}{\partial x} + \frac{\partial u_y}{\partial y} + \frac{\partial u_z}{\partial z} \right)} \right] + \rho \cancelto{\text{Grav.}}{b_x}
 \end{align*}
-Next, we move to the y-direction,
+which results in 
 \begin{align*}
-    \cancelto{\text{S.S.}}{\frac{\partial}{\partial t} (\rho u_y)} + \frac{\partial}{\partial x_j} (\rho u_y u_j) &= \cancelto{\text{F.D.}}{-\frac{\partial P}{\partial y}} + \frac{\partial}{\partial x_j} \left[ \mu \left( \frac{\partial u_y}{\partial x_j} + \frac{\partial u_j}{\partial x_y} \right) \right] - \frac{\partial}{\partial y} \left(\frac{2}{3} \mu \frac{\partial u_k}{\partial x_k} \right) + \rho b_y
+    \Aboxed{\frac{\partial^2 u_x}{\partial y^2} &= 0}
 \end{align*}
-which simplifies to,
+Next, in the y-direction with the momentum equation,
 \begin{align*}
-    \rho \left(\cancelto{\text{Par.}}{\frac{\partial}{\partial x}} (u_x u_y) + \cancelto{\text{F.D.}}{\frac{\partial}{\partial y}} (u_y^2) + \cancelto{\text{2D}}{\frac{\partial}{\partial z}} (u_y u_z) \right) &=  \mu \left(\cancelto{\text{Par.}}{\frac{\partial^2 u_y}{\partial x^2}} + \cancelto{\text{2D}}{\frac{\partial^2 u_y}{\partial z^2}} \right) + \rho b_y \\
-    \Aboxed{0 &= b_y}
+    \cancelto{\text{S.S.}}{\frac{\partial}{\partial t} (\rho u_y)} + \frac{\partial}{\partial x_j} (\rho u_y u_j) &= -\frac{\partial P}{\partial y} + \frac{\partial}{\partial x_j} \left[\mu \left( \frac{\partial u_y}{\partial x_j} + \frac{\partial u_j}{\partial x_y} \right) \right] - \frac{\partial}{\partial y} \left(\frac{2}{3} \mu \frac{\partial u_k}{\partial x_k} \right) + \rho b_y
+\end{align*}
+expanding the index notation and simplifying,
+\begin{align*}
+    \rho \left(\cancelto{\text{Par.}}{\frac{\partial}{\partial x}} (u_x u_y) + \cancelto{\text{Par.}}{\frac{\partial}{\partial y}} (u_y^2) + \cancelto{\text{Par.}}{\frac{\partial}{\partial z}} (u_y u_z) \right) &=  -\frac{\partial P}{\partial y} + \frac{\partial}{\partial x} \left[\mu \left(\cancelto{\text{Par.}}{\frac{\partial u_y}{\partial x}} + \cancelto{\text{Cont.}}{\frac{\partial u_x}{\partial y}} \right) \right] \\
+    &\quad + \frac{\partial}{\partial y} \left[\mu \cancelto{\text{Par.}}{\left(\frac{\partial u_y}{\partial y} + \frac{\partial u_y}{\partial y} \right)} \right] + \frac{\partial}{\partial z} \left[\mu \left(\cancelto{\text{2D}}{\frac{\partial u_y}{\partial z} + \frac{\partial u_z}{\partial y}} \right) \right] \\
+    &\quad - \frac{\partial}{\partial y} \left[\frac{2}{3} \mu \cancelto{\text{Cont.}}{\left(\frac{\partial u_x}{\partial x} + \frac{\partial u_y}{\partial y} + \frac{\partial u_z}{\partial z} \right)} \right] + \rho \cancelto{\text{Grav.}}{b_y}
+\end{align*}
+resulting in
+\begin{align*}
+    \Aboxed{\frac{\partial P}{\partial y} &= 0}
+\end{align*}
+Finally, in the z-direction with the momentum equation,
+\begin{align*}
+    \cancelto{\text{S.S.}}{\frac{\partial}{\partial t} (\rho u_z)} + \frac{\partial}{\partial x_j} (\rho u_z u_j) &= -\frac{\partial P}{\partial z}+ \frac{\partial}{\partial x_j} \left[\mu \left( \frac{\partial u_z}{\partial x_j} + \frac{\partial u_j}{\partial x_z} \right) \right] - \frac{\partial}{\partial z} \left(\frac{2}{3} \mu \frac{\partial u_k}{\partial x_k} \right) + \rho b_z
+\end{align*}
+expanding the index notation and simplifying,
+\begin{align*}
+    \rho \left(\cancelto{\text{2D}}{\frac{\partial}{\partial x}} (u_x u_z) + \cancelto{\text{2D}}{\frac{\partial}{\partial y}} (u_y u_z) + \cancelto{\text{2D}}{\frac{\partial}{\partial z}} (u_z^2) \right) &=  -\frac{\partial P}{\partial z} + \frac{\partial}{\partial x} \left[\mu \left(\cancelto{\text{2D}}{\frac{\partial u_z}{\partial x}} + \cancelto{\text{2D}}{\frac{\partial u_x}{\partial z}} \right) \right] \\
+    &\quad + \frac{\partial}{\partial y} \left[\mu \left(\cancelto{\text{2D}}{\frac{\partial u_z}{\partial y}} + \cancelto{\text{2D}}{\frac{\partial u_y}{\partial z}} \right) \right] + \frac{\partial}{\partial z} \left[\mu \left(\cancelto{\text{2D}}{\frac{\partial u_z}{\partial z} + \frac{\partial u_z}{\partial z}} \right) \right] \\
+    &\quad - \frac{\partial}{\partial z} \left[\frac{2}{3} \mu \cancelto{\text{Cont.}}{\left(\frac{\partial u_x}{\partial x} + \frac{\partial u_y}{\partial y} + \frac{\partial u_z}{\partial z} \right)} \right] + \rho b_z
+\end{align*}
+resulting in
+\begin{align*}
+    \Aboxed{\frac{\partial P}{\partial z} &= -\rho g}
 \end{align*}
