@@ -5,7 +5,7 @@
 Using no-slip boundary conditions, the boundary conditions are 
 \begin{align*}
     u_x(0) &= 0 \\
-    u_x(h) &= u_w
+    u_x(H) &= u_w
 \end{align*}
 
 The simplified momentum equation in the $x$-direction is given by
@@ -19,11 +19,11 @@ which has the general solution
 where $A$ and $B$ are constants. Applying the boundary conditions, we find
 \begin{align*}
     u_x(0) &= B = 0 \\
-    u_x(h) &= A h = u_w
+    u_x(H) &= A H = u_w
 \end{align*}
 which gives
 \begin{align*}
-    u_x(y) &= \frac{u_w}{h} y
+    u_x(y) &= \frac{u_w}{H} y
 \end{align*}
 This linear profile is also known as Couette flow. Next, the simplified momentum equation in the $y$-direction is given by
 \begin{align*}
@@ -45,6 +45,6 @@ where $D$ is a constant.
 
 So in summary, 
 \begin{empheq}[box=\fbox]{align*}
-    \vec{u} &= \left[\frac{u_w}{h} y\right] \hat{i} \\
+    \vec{u} &= \left[\frac{u_w}{H} y\right] \hat{i} \\
     P &= -\rho g z + D
 \end{empheq}
