@@ -1,0 +1,45 @@
+\section{}
+\textit{Integrate eq. (2) over boundary control volume 1 and approximate the convective term using upwind scheme. Use central difference for approximation of the diffusive term. Assume constant cross section value $S = 1$.}
+
+% Eq. 2 is given by:
+% \begin{align*}
+%     \frac{d \hat{T}}{dx} &= \frac{d}{dx}\left(\frac{1}{\text{Pe}}\frac{d \hat{T}}{dx}\right)
+% \end{align*}
+% Then integrating over the control volume,
+% \begin{align*}
+%     \int_{\Delta x} \frac{d \hat{T}}{dx} S dx &= \int_{\Delta x} \frac{d}{dx}\left(\frac{1}{\text{Pe}} \frac{d \hat{T}}{dx}\right) S dx \\
+%     \hat{T} \bigg|_{w}^{e} &= \left(\frac{1}{\text{Pe}} \frac{d \hat{T}}{dx}\right) \bigg|_{w}^{e} 
+% \end{align*}
+% Then,
+% \begin{align*}
+%     \Aboxed{\underbrace{\hat{T}_e - \hat{T}_w}_{\text{Convective}} &= \underbrace{\frac{1}{\text{Pe}} \left[\frac{d \hat{T}}{dx}\right]_e - \frac{1}{\text{Pe}} \left[\frac{d \hat{T}}{dx}\right]_w}_{\text{Diffusive}}}
+% \end{align*}
+
+Integrating Eq. 2, but over control volume 1,
+\begin{align*}
+    \int_{\Delta x} \frac{d \hat{T}}{dx} S dx &= \int_{\Delta x} \frac{d}{dx}\left(\frac{1}{\text{Pe}} \frac{d \hat{T}}{dx}\right) S dx \\
+    \hat{T} \bigg|_{A}^{e} &= \left(\frac{1}{\text{Pe}} \frac{d \hat{T}}{dx}\right) \bigg|_{A}^{e}
+\end{align*}
+Then,
+\begin{align*}
+    \Aboxed{\underbrace{\hat{T}_e - \hat{T}_A}_{\text{Convective}} &= \underbrace{\frac{1}{\text{Pe}} \left[\frac{d \hat{T}}{dx}\right]_e - \frac{1}{\text{Pe}} \left[\frac{d \hat{T}}{dx}\right]_A}_{\text{Diffusive}}}
+\end{align*}
+For the convective term, upwind scheme is used,
+\begin{align*}
+    \hat{T}_w &= \hat{T}_A \\
+    \hat{T}_e &= \hat{T}_P
+\end{align*}
+Then,
+\begin{align*}
+    \text{Convective} &= \hat{T}_e - \hat{T}_A \\
+    &= \hat{T}_P - \hat{T}_A
+\end{align*}
+For the diffusive term, a central difference scheme is used,
+\begin{align*}
+    \left[\frac{d \hat{T}}{dx}\right]_e &= \frac{\hat{T}_E - \hat{T}_P}{\Delta x} \\
+    \left[\frac{d \hat{T}}{dx}\right]_A &= \frac{\hat{T}_P - \hat{T}_A}{\Delta x/2}
+\end{align*}
+Substituting back into the equation derived,
+\begin{align*}
+    \hat{T}_E - \hat{T}_P &= \frac{1}{\text{Pe}} \left(\frac{\hat{T}_E + \hat{T}_P - 2\hat{T}_A}{\Delta x}\right) 
+\end{align*}
