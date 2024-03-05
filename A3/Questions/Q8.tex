@@ -1,0 +1,75 @@
+\section{}
+% Rearrange the obtained equation into a general form
+% aP TP = aW TW + aETE + q
+% u
+% T
+% and identify coefficients aP , aW , aE, q
+% u
+% T
+% , and q
+% P
+% T
+% .
+
+% \section{}
+% \textit{Rearrange the obtained equation into a general form}
+% \[
+%     a_P T_P = a_W T_W + a_E T_E + q_{T}^{u}
+% \]
+% \textit{and identify coefficients $a_P$, $a_W$, $a_E$, $q_{T}^{u}$, and $q_{P}^{T}$.}\\
+
+% From Q5, the equation obtained is,
+% \begin{align*}
+%     \hat{T}_E - \hat{T}_P &= \frac{1}{\text{Pe}} \left(\frac{\hat{T}_E + 2 \hat{T}_A - 3 \hat{T}_P}{\Delta x}\right) 
+% \end{align*}
+% Expanding the equation,
+% \begin{align*}
+%     %\left[\frac{3}{\text{Pe} \Delta x} -1\right]\hat{T}_P &= \left[\frac{1}{\text{Pe} \Delta x} -1\right]\hat{T}_E + \frac{2}{\text{Pe} \Delta x}\hat{T}_A
+%     \underbrace{\left[\frac{3}{\text{Pe} \Delta x} -1\right]}_{a_P}\hat{T}_P &= \underbrace{[0]}_{a_W}\hat{T}_W + \underbrace{\left[\frac{1}{\text{Pe} \Delta x} -1\right]}_{a_E}\hat{T}_E + \underbrace{\frac{2}{\text{Pe} \Delta x}}_{q_{T}^{u}} \hat{T}_A + \underbrace{0}_{q_{P}^{T}}
+% \end{align*}
+% \section{}
+% \textit{Integrate eq. (2) over boundary control volume 5 and approximate the convective term using upwind scheme. Use central difference scheme for the approximation of the diffusive term. Assume constant cross section value $S = 1$.} \\
+
+% Integrating Eq. 2, but over control volume 5,
+% \begin{align*}
+%     \int_{\Delta x} \frac{d \hat{T}}{dx} S dx &= \int_{\Delta x} \frac{d}{dx}\left(\frac{1}{\text{Pe}} \frac{d \hat{T}}{dx}\right) S dx \\
+%     \hat{T} \bigg|_{w}^{B} &= \left(\frac{1}{\text{Pe}} \frac{d \hat{T}}{dx}\right) \bigg|_{w}^{B}
+% \end{align*}
+% Then,
+% \begin{align*}
+%     \Aboxed{\underbrace{\hat{T}_w - \hat{T}_B}_{\text{Convective}} &= \underbrace{\frac{1}{\text{Pe}} \left[\frac{d \hat{T}}{dx}\right]_w - \frac{1}{\text{Pe}} \left[\frac{d \hat{T}}{dx}\right]_B}_{\text{Diffusive}}}
+% \end{align*}
+% For the convective term, upwind scheme is used,
+% \begin{align*}
+%     \hat{T}_B &= \hat{T}_P \\
+%     \hat{T}_w &= \hat{T}_W 
+% \end{align*}
+% Then,
+% \begin{align*}
+%     \text{Convective} &= \hat{T}_w - \hat{T}_B \\
+%     &= \hat{T}_W - \hat{T}_P
+% \end{align*}
+% For the diffusive term, a central difference scheme is used,
+% \begin{align*}
+%     \left[\frac{d \hat{T}}{dx}\right]_w &= \frac{\hat{T}_P - \hat{T}_W}{\Delta x} \\
+%     \left[\frac{d \hat{T}}{dx}\right]_B &= \frac{\hat{T}_B - \hat{T}_P}{\Delta x/2}
+% \end{align*}
+% Substituting back into the equation derived,
+% \begin{align*}
+%     \Aboxed{\hat{T}_W - \hat{T}_P &= \frac{1}{\text{Pe}} \left(\frac{3 \hat{T}_P - \hat{T}_W - 2 \hat{T}_B}{\Delta x}\right)} 
+% \end{align*}
+
+\textit{Rearrange the obtained equation into a general form}
+\[
+    a_P T_P = a_W T_W + a_E T_E + q_{T}^{u}
+\]
+\textit{and identify coefficients $a_P$, $a_W$, $a_E$, $q_{T}^{u}$, and $q_{P}^{T}$.}\\
+
+From Q7, the equation obtained is,
+\begin{align*}
+    \hat{T}_W - \hat{T}_P &= \frac{1}{\text{Pe}} \left(\frac{3 \hat{T}_P - \hat{T}_W - 2 \hat{T}_B}{\Delta x}\right)
+\end{align*}
+Expanding the equation,
+\begin{align*}
+    \underbrace{\left[\frac{-3}{\text{Pe} \Delta x} -1\right]}_{a_P}\hat{T}_P &= \underbrace{\left[\frac{-1}{\text{Pe} \Delta x} -1\right]}_{a_W}\hat{T}_W + \underbrace{[0]}_{a_E}\hat{T}_E + \underbrace{\frac{-2}{\text{Pe} \Delta x} \hat{T}_B}_{q_{T}^{u}} + \underbrace{0}_{q_{P}^{T}}
+\end{align*}

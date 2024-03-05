@@ -1,0 +1,31 @@
+\section{}
+\textit{Integrate eq. (2) over boundary control volume 5 and approximate the convective term using upwind scheme. Use central difference scheme for the approximation of the diffusive term. Assume constant cross section value $S = 1$.} \\
+
+Integrating Eq. 2, but over control volume 5,
+\begin{align*}
+    \int_{\Delta x} \frac{d \hat{T}}{dx} S dx &= \int_{\Delta x} \frac{d}{dx}\left(\frac{1}{\text{Pe}} \frac{d \hat{T}}{dx}\right) S dx \\
+    \hat{T} \bigg|_{w}^{B} &= \left(\frac{1}{\text{Pe}} \frac{d \hat{T}}{dx}\right) \bigg|_{w}^{B}
+\end{align*}
+Then,
+\begin{align*}
+    \Aboxed{\underbrace{\hat{T}_w - \hat{T}_B}_{\text{Convective}} &= \underbrace{\frac{1}{\text{Pe}} \left[\frac{d \hat{T}}{dx}\right]_w - \frac{1}{\text{Pe}} \left[\frac{d \hat{T}}{dx}\right]_B}_{\text{Diffusive}}}
+\end{align*}
+For the convective term, upwind scheme is used,
+\begin{align*}
+    \hat{T}_B &= \hat{T}_P \\
+    \hat{T}_w &= \hat{T}_W 
+\end{align*}
+Then,
+\begin{align*}
+    \text{Convective} &= \hat{T}_w - \hat{T}_B \\
+    &= \hat{T}_W - \hat{T}_P
+\end{align*}
+For the diffusive term, a central difference scheme is used,
+\begin{align*}
+    \left[\frac{d \hat{T}}{dx}\right]_w &= \frac{\hat{T}_P - \hat{T}_W}{\Delta x} \\
+    \left[\frac{d \hat{T}}{dx}\right]_B &= \frac{\hat{T}_B - \hat{T}_P}{\Delta x/2}
+\end{align*}
+Substituting back into the equation derived,
+\begin{align*}
+    \Aboxed{\hat{T}_W - \hat{T}_P &= \frac{1}{\text{Pe}} \left(\frac{3 \hat{T}_P - \hat{T}_W - 2 \hat{T}_B}{\Delta x}\right)} 
+\end{align*}
