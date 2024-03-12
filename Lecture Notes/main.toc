@@ -1,0 +1,34 @@
+\contentsline {section}{\numberline {1}Tensor Notation}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Einstein Summation Convention}{1}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Examples}{1}{subsubsection.1.1.1}%
+\contentsline {subsubsubsection}{\numberline {1.1.1.1}Example 1}{1}{subsubsubsection.1.1.1.1}%
+\contentsline {subsubsubsection}{\numberline {1.1.1.2}Example 2}{2}{subsubsubsection.1.1.1.2}%
+\contentsline {subsection}{\numberline {1.2}Kronecker Delta}{2}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Properties (in 3D)}{2}{subsubsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.3}Levi-Civita Symbol}{2}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Properties (in 3D)}{3}{subsubsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.4}Vector and Tensor Operations}{4}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}Multiplication of a Vector by a Scalar}{4}{subsubsection.1.4.1}%
+\contentsline {subsubsection}{\numberline {1.4.2}Dot Product of Two Vectors}{4}{subsubsection.1.4.2}%
+\contentsline {subsubsection}{\numberline {1.4.3}Cross Product of Two Vectors}{4}{subsubsection.1.4.3}%
+\contentsline {subsubsection}{\numberline {1.4.4}Dot Product of Two Tensors (Tensor Product)}{4}{subsubsection.1.4.4}%
+\contentsline {subsubsection}{\numberline {1.4.5}Double Dot Product of Two Tensors}{4}{subsubsection.1.4.5}%
+\contentsline {subsubsection}{\numberline {1.4.6}Nabla Operator}{4}{subsubsection.1.4.6}%
+\contentsline {subsubsubsection}{\numberline {1.4.6.1}Gradient of a Scalar}{5}{subsubsubsection.1.4.6.1}%
+\contentsline {subsubsubsection}{\numberline {1.4.6.2}Gradient of a Vector}{5}{subsubsubsection.1.4.6.2}%
+\contentsline {subsubsubsection}{\numberline {1.4.6.3}Divergence of a Vector}{5}{subsubsubsection.1.4.6.3}%
+\contentsline {subsubsubsection}{\numberline {1.4.6.4}Divergence of a Tensor}{5}{subsubsubsection.1.4.6.4}%
+\contentsline {subsubsubsection}{\numberline {1.4.6.5}Curl of a Vector}{6}{subsubsubsection.1.4.6.5}%
+\contentsline {subsubsubsection}{\numberline {1.4.6.6}Laplace of a Scalar}{6}{subsubsubsection.1.4.6.6}%
+\contentsline {subsubsubsection}{\numberline {1.4.6.7}Laplace of a Vector}{6}{subsubsubsection.1.4.6.7}%
+\contentsline {subsubsubsection}{\numberline {1.4.6.8}Vector Outer Product (Dyadic Product)}{7}{subsubsubsection.1.4.6.8}%
+\contentsline {subsection}{\numberline {1.5}Summary of Tensor Operations}{8}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Flow Descriptions}{8}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Continuity Equation}{8}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Momentum Equation}{9}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Energy Equation}{10}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Common Simplifications}{10}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Discretization Methods}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Finite Volume Method}{10}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Central Difference Scheme}{11}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Upwind Scheme}{12}{subsubsection.3.1.2}%

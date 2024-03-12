@@ -4,7 +4,7 @@
 \usepackage{tabularx} % extra features for tabular environment
 \usepackage{amsmath}  % improve math presentation
 \usepackage{graphicx} % takes care of graphic including machinery
-\usepackage[margin=1in,letterpaper]{geometry} % decreases margins
+\usepackage[margin=0.8in,letterpaper]{geometry} % decreases margins
 \usepackage{cite} % takes care of citations
 \usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
 \usepackage{pgfplotstable, booktabs}
@@ -21,12 +21,48 @@
 \usepackage{parskip}
 \usepackage{cancel}
 \usepackage{enumitem}
-\usepackage{amsmath}
 \usepackage{mathrsfs}
 \usepackage{physics}
 \usepackage{subcaption}
 \usepackage{pdfpages}
 \usepackage{amsthm} 
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{breqn}
+
+% sets the number of sectioning levels that get number and appear in the contents
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -53,6 +89,7 @@
 \newcommand*\widefbox[1]{\fbox{\hspace{0em}#1\hspace{0em}}}
 \DeclareMathOperator{\Div}{div}
 \DeclareMathOperator{\Grad}{grad}
+\DeclareMathOperator{\Curl}{curl}
 
 \pagestyle{fancy}
 \fancyhf{} % Clear all header and footer fields
@@ -60,6 +97,7 @@
 %\fancyhead[C]{Center Header} 
 \fancyhead[C]{Lecture Notes}
 \fancyhead[R]{Alex Diep}
+\setlength{\headheight}{15pt}
 
 \fancyfoot[C]{\thepage}
 
@@ -67,9 +105,10 @@
 \titleformat*{\section}{\Large\bfseries}
 \titleformat*{\subsection}{\large\bfseries}
 
-\renewcommand{\thesection}{Question \arabic{section}}
-\renewcommand{\thesubsection}{(\alph{subsection})}
-\renewcommand*{\arraystretch}{1.5}
+% \renewcommand{\thesection}{Question \arabic{section}}
+% \renewcommand{\thesubsection}{(\alph{subsection})}
+\renewcommand*{\arraystretch}{2}
+\setlength{\jot}{10pt}
 
 \hypersetup{
 	colorlinks=true,       % false: boxed links; true: colored links
@@ -78,6 +117,10 @@
 	filecolor=magenta,     % color of file links
 	urlcolor=blue         
 }
+
+% Define Custom Table Column Types
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
 %++++++++++++++++++++++++++++++++++++++++
 \begin{document}
 % \begin{titlepage}
@@ -107,10 +150,30 @@
     
 % \end{titlepage}
 
-\input{Lecture Number/Lecture 4, Jan 23, 2024.tex}
-\input{Lecture Number/Lecture 5, Jan 25, 2024.tex}
-\input{Lecture Number/Lecture 6, Jan 30, 2024.tex}
-\input{Lecture Number/Lecture 7, Feb 1, 2024.tex}
+% TOC
+\pagenumbering{gobble}
+\pagenumbering{roman}
+% Table of Contents (Hyperlinks set to locally black)
+{
+    \hypersetup{hidelinks}
+    \tableofcontents
+}
+\newpage
+{
+    \hypersetup{linkcolor=black}
+    \listoffigures
+    \listoftables
+}
+\newpage
+\pagenumbering{arabic}
+
+\input{Section/Module 1.tex}
+\input{Section/Module 2.tex}
+
+% \input{Lecture Number/Lecture 4, Jan 23, 2024.tex}
+% \input{Lecture Number/Lecture 5, Jan 25, 2024.tex}
+% \input{Lecture Number/Lecture 6, Jan 30, 2024.tex}
+% \input{Lecture Number/Lecture 7, Feb 1, 2024.tex}
 % \newpage
 % %\bibliographystyle{IEEEtran}
 % %\bibliography{citations.bib}
