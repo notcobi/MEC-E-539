@@ -1,0 +1,15 @@
+\section{}
+\textit{Approximate the diffusive term of the equation using the central
+difference scheme.}
+
+For central difference scheme,
+\begin{align*}
+    \left[\frac{d \hat{T}}{dx}\right]_e &= \frac{\hat{T}_E - \hat{T}_P}{\Delta x} \\
+    \left[\frac{d \hat{T}}{dx}\right]_w &= \frac{\hat{T}_P - \hat{T}_W}{\Delta x}
+\end{align*}
+Then, the diffusive term becomes,
+\begin{align*}
+    \text{Diffusive} &= \frac{1}{\text{Pe}} \left[\frac{d \hat{T}}{dx}\right]_e - \frac{1}{\text{Pe}} \left[\frac{d \hat{T}}{dx}\right]_w \\
+    &= \frac{1}{\text{Pe}} \left(\frac{\hat{T}_E - \hat{T}_P}{\Delta x}\right) - \frac{1}{\text{Pe}} \left(\frac{\hat{T}_P - \hat{T}_W}{\Delta x}\right) \\
+    &= \boxed{\frac{1}{\text{Pe}} \left(\frac{\hat{T}_E - 2\hat{T}_P + \hat{T}_W}{\Delta x}\right)}
+\end{align*}
