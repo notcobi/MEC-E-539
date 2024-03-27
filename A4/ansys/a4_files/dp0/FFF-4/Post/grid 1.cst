@@ -1,4 +1,4 @@
-# State file created:  2024/03/26 12:36:33
+# State file created:  2024/03/27 08:41:41
 # CFX-23.2
 
 CALCULATOR:
@@ -1631,7 +1631,7 @@ VECTOR:u streamline,/WIREFRAME:Wireframe
   CAMERA:
     Option = Pivot Point and Quaternion
     Pan = 0,0
-    Pivot Point = 0.0565941,0.005,0
+    Pivot Point = 0.0170208,0.0200266,-0.000996038
     Rotation = -90, 0, 0
     Rotation Quaternion = 0,0,0,1
     Scale = 8.73211

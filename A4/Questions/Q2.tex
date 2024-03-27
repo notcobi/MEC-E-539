@@ -1,13 +1,340 @@
-\section{}
-\textit{Approximate the convective term of the obtained equation using
-the upwind scheme.}
-For upwind scheme with east as positive flow direction,
+\section{Results analyses}
+\subsection{Convergence of Simulations}
+% \end{table}
+% The mesh element size will be 5.0 mm for the first mesh. The mesh will be refined by reducing the mesh element size by 2, resulting in a total of 4 times the number of cells. The mesh will be refined 5 times. The convergence criteria is set for the RMS of momentum at $10^{-5}$. The scheme used for convective term discretization is second order accurate. The coupled solver will be used.
+
+% 5 inflation layers, growth rate of 1.2, default transition ratio 0.272
+
+% use viscous laminar model 
+
+% describe the BC i guess idk what they want
+
+
+%     method: coupled
+%     Gradient: least squares cell based
+%     Pressure: Second order
+%     Momentum: Second order upwind
+
+%     start point (0.001, 0.005)
+%     end point (0.20005, 0.005)
+%     max iterations 1000
+
+%     mesh 1: 2390 elements
+%     mesh 2: element size 0.0025, 9390 elements
+%     mesh 3: element size 0.00125, 37870 elements
+%     mesh 4: element size 0.000625, 152044 elements
+%     mesh 5: element size 0.0003125, 613378 elements
+
+% Convergence of the simulations. [10 Points]
+% For each case track the behaviour of the residuals and drag coefficient as functions
+% of iteration. Also visualize the x−velocity component along a line defined by two
+% points: (0.0005, 0) and (0.2000, 0) m. Stop the simulation when the residuals
+% drop in several orders of magnitude e.g. up to 10−5
+% , and Fd stop changing. In the
+% report, provide the criteria you used to stop the simulations. Your observations
+% must be clearly noted in the report (Tables and Figures).
+
+The residuals had a convergence criteria of $10^{-5}$. For all gridsl, the residuals converged before the maximum number of iterations (1000) was reached. The drag coefficient reached a steady value in all grids. Figures \ref{fig:residuals_grid_1} to \ref{fig:velocity_profile_grid_5} show the residuals, drag coefficient, and velocity profile for each grid.
+\begin{table}[h]
+    \centering
+    \caption{Grid Convergence}
+    \label{tab:grid_convergence}
+    \begin{tabular}{ccc}
+        \toprule
+        Grid & Iterations & Drag Force \\
+        \midrule
+        1 & 57 & $2.51 \times 10^{-5}$ \\
+        2 & 53 & $2.18 \times 10^{-5}$ \\
+        3 & 51 & $2.08 \times 10^{-5}$ \\
+        4 & 51 & $2.05 \times 10^{-5}$ \\
+        5 & 52 & $2.03 \times 10^{-5}$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/residuals grid 1.png}
+        \caption{Residuals for Grid 1}
+        \label{fig:residuals_grid_1}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/drag force on square grid 1.png}
+        \caption{Drag Coefficient for Grid 1}
+        \label{fig:drag_coefficient_grid_1}
+    \end{minipage}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/residuals grid 2.png}
+        \caption{Residuals for Grid 2}
+        \label{fig:residuals_grid_2}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/drag force on square grid 2.png}
+        \caption{Drag Coefficient for Grid 2}
+        \label{fig:drag_coefficient_grid_2}
+    \end{minipage}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/residuals grid 3.png}
+        \caption{Residuals for Grid 3}
+        \label{fig:residuals_grid_3}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/drag force on square grid 3.png}
+        \caption{Drag Coefficient for Grid 3}
+        \label{fig:drag_coefficient_grid_3}
+    \end{minipage}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/residuals grid 4.png}
+        \caption{Residuals for Grid 4}
+        \label{fig:residuals_grid_4}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/drag force on square grid 4.png}
+        \caption{Drag Coefficient for Grid 4}
+        \label{fig:drag_coefficient_grid_4}
+    \end{minipage}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/residuals grid 5.png}
+        \caption{Residuals for Grid 5}
+        \label{fig:residuals_grid_5}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/drag force on square grid 5.png}
+        \caption{Drag Coefficient for Grid 5}
+        \label{fig:drag_coefficient_grid_5}
+    \end{minipage}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/u velocity along centerline grid 1.png}
+        \caption{Velocity Profile for Grid 1}
+        \label{fig:velocity_profile_grid_1}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/u velocity along centerline grid 2.png}
+        \caption{Velocity Profile for Grid 2}
+        \label{fig:velocity_profile_grid_2}
+    \end{minipage}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/u velocity along centerline grid 3.png}
+        \caption{Velocity Profile for Grid 3}
+        \label{fig:velocity_profile_grid_3}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/u velocity along centerline grid 4.png}
+        \caption{Velocity Profile for Grid 4}
+        \label{fig:velocity_profile_grid_4}
+    \end{minipage}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{Questions/Figures/u velocity along centerline grid 5.png}
+    \caption{Velocity Profile for Grid 5}
+    \label{fig:velocity_profile_grid_5}
+\end{figure}
+
+\subsection{Analyses of the Velocity Fields}
+The contours are shown in Figures \ref{fig:velocity_contour_grid_1} and \ref{fig:velocity_contour_grid_5}. The flow is symmetric about the centerline. The flow behind the square object is observable in grid 1, but much more refined in grid 5. In grid 5, two flanges of high velocity flow can be seen to the side of the square object. In comparison, the whole region to the side of the square object is a high velocity region in grid 1, which makes less physical sense. Grid 5 should be used since the results are more physical.
+
+The streamlines are shown in Figures \ref{fig:streamlines_grid_1}, \ref{fig:streamlines_grid_3}, and \ref{fig:streamlines_grid_5}. Again, the flow is symmetric about the centerline. A small vortex region can be seen from behind the square object in grids 3 and 5. The flow aspects are difficult to discern in grid 1. Considering that meshing grid 5 took roughly 20 minutes to mesh on my desktop computer, grid 3 is a good compromise between accuracy and computational cost.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/u velocity contour grid 1.png}
+        \caption{Velocity Contour for Grid 1}
+        \label{fig:velocity_contour_grid_1}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/u velocity contour grid 5.png}
+        \caption{Velocity Contour for Grid 5}
+        \label{fig:velocity_contour_grid_5}
+    \end{minipage}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/u velocity streamline grid 1.png}
+        \caption{Streamlines for Grid 1}
+        \label{fig:streamlines_grid_1}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/u velocity streamline grid 3.png}
+        \caption{Streamlines for Grid 3}
+        \label{fig:streamlines_grid_3}
+    \end{minipage}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{Questions/Figures/u velocity streamline grid 5.png}
+    \caption{Streamlines for Grid 5}
+    \label{fig:streamlines_grid_5}
+\end{figure}
+
+\subsection{Drag Coefficient and Vortex Length}
+% Drag coefficient and length of a vortex. [20 Points]
+% Show the calculations of the vortex length (recirculation length), Lr. Present Lr
+% values obtained on each mesh in a Table. In the same table, calculate the drag
+% coefficient Cd using Fd and include the values obtained from different meshes.
+% Plot the velocity ux along the wake centerline specified above for five cases at a
+% single graph. Discuss the results with respect to mesh refinement.
+% On different graphs, plot Cd and Lr as functions of total number of cells. Discuss
+% the plots. Does the numerical solution become mesh independent?
+\subsubsection{Vortex Length and Drag Coefficient}
+The vortex length and drag coefficient are summarized in Table \ref{tab:vortex_length_drag_coefficient_summary}. 
+\begin{table}[H]
+    \centering
+    \caption{Vortex Length and Drag Coefficient}
+    \label{tab:vortex_length_drag_coefficient_summary}
+    \begin{tabular}{cccc}
+        \toprule
+        Grid & Recirculation Length & Drag Coefficient \\
+        & (m) & \\
+        \midrule
+        1 & 0.0115 & 3.1413 \\
+        2 & 0.0181 & 2.7280 \\
+        3 & 0.0186 & 2.5984 \\
+        4 & 0.0183 & 2.5630 \\
+        5 & 0.01801 & 2.5363 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+Sample calculations for grid 1 will be shown. The recirculation length is the distance between the two points ($x_1$, $x_2$) where the velocity is zero. Then
 \begin{align*}
-    \hat{T}_w &= \hat{T}_W \\
-    \hat{T}_e &= \hat{T}_P 
+    L_r &= x_2 - x_1 \\
+    &= 0.0234 - 0.0119 \\
+    &= 0.0115 \text{ m}
 \end{align*}
-Then, the convective term becomes,
+The drag coefficient is calculated as
 \begin{align*}
-    \text{Convective} &= \hat{T}_e - \hat{T}_w \\
-    &= \boxed{\hat{T}_P - \hat{T}_W}
+    C_d &= \frac{2F_d}{\rho U_\infty^2 D} \\
+    &= \frac{2 \times 2.51 \times 10^{-5}}{1.0 \times 0.04^2 \times 0.01} \\
+    &= 3.1413
 \end{align*}
+
+\subsubsection{Recirculation Length on All Grids}
+The combined plot of the velocity profile for all grids is shown in Figure \ref{fig:velocity_profile_all_grids}. Note, there is an issue with the coordinates of the line in grid 5 because the origin was defined slightly differently than grids 1-4.
+
+Grid 1 does not really have a recirculation length, while grid 2 shows some recirculation. In Grids 3-5, the concave shape develops and becomes steady around grid 4. Grid 3 seems to capture the details of grids 4 and 5 for ~16x fewer cells.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Questions/Figures/recirc_combined.png}
+    \caption{Velocity Profile for All Grids}
+    \label{fig:velocity_profile_all_grids}
+\end{figure}
+
+\subsubsection{Mesh Independence}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/drag_coefficient_vs_cells.png}
+        \caption{Drag Coefficient vs. Cells}
+        \label{fig:drag_coefficient_vs_cells}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Questions/Figures/recirc_length_vs_cells.png}
+        \caption{Recirculation Length vs. Cells}
+        \label{fig:recirculation_length_vs_cells}
+    \end{minipage}
+\end{figure}
+% grid	length err	drag err
+% 1	36.14658523	23.85428574
+% 2	0.499722376	7.55876748
+% 3	3.275957801	2.446790692
+% % 4	1.610216546	1.05181403
+% 5	-	-
+
+\begin{table}[H]
+    \centering
+    \caption{Error in Vortex Length and Drag Coefficient with Respect to Grid 5}
+    \label{tab:error_vortex_length_drag_coefficient}
+    \begin{tabular}{ccc}
+        \toprule
+        Grid & Vortex Length Error & Drag Coefficient Error \\
+        & (\%) & (\%) \\
+        \midrule
+        1 & 36.15 & 23.85 \\
+        2 & 0.50 & 7.56 \\
+        3 & 3.28 & 2.45 \\
+        4 & 1.61 & 1.05 \\
+        5 & - & - \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+The drag coefficient and recirculation length are plotted against the total number of cells in Figures \ref{fig:drag_coefficient_vs_cells} and \ref{fig:recirculation_length_vs_cells}. The drag coefficient and recirculation length become independent around mesh 3, with it's results being within 3\% of grid 5. The error in the vortex length and drag coefficient with respect to grid 5 is shown in Table \ref{tab:error_vortex_length_drag_coefficient}.
+
+% \subsubsection{Sample Calculations}
+% \begin{table}[H]
+%     \centering
+%     \caption{Vortex Length}
+%     \label{tab:vortex_length_drag_coefficient}
+%     \begin{tabular}{cccc}
+%         \toprule
+%         Grid & $x_1$ & $x_2$ & Recirculation Length \\
+%         & (m) & (m) & (m) \\
+%         \midrule
+%         1 & 0.0119 & 0.0234 & 0.0115 \\
+%         2 & 0.0111 & 0.0292 & 0.0181 \\
+%         3 & 0.0104 & 0.0290 & 0.0186 \\
+%         4 & 0.0104 & 0.0287 & 0.0183 \\
+%         5 & 0.00539 & 0.0234 & 0.01801 \\
+%         \bottomrule
+%     \end{tabular}
+% \end{table}
+
+
+% \begin{table}[H]
+%     \centering
+%     \caption{Drag Coefficient}
+%     \label{tab:drag_coefficient}
+%     \begin{tabular}{ccc}
+%         \toprule
+%         Grid & Drag Force & Drag Coefficient \\
+%         & (N) & \\
+%         \midrule
+%         1 & $2.51 \times 10^{-5}$ & 3.1413 \\
+%         2 & $2.18 \times 10^{-5}$ & 2.7280 \\
+%         3 & $2.08 \times 10^{-5}$ & 2.5984 \\
+%         4 & $2.05 \times 10^{-5}$ & 2.5630 \\
+%         5 & $2.03 \times 10^{-5}$ & 2.5363 \\
+%         \bottomrule
+%     \end{tabular}
+% \end{table}
+% Sample calculations for grid 1 will be shown. The drag coefficient is calculated as
