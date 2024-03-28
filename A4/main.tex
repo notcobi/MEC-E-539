@@ -28,6 +28,7 @@
 \usepackage{pdfpages}
 \usepackage{amsthm} 
 \usepackage{float}
+\usepackage[nottoc,numbib]{tocbibind}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -82,41 +83,60 @@
 }
 %++++++++++++++++++++++++++++++++++++++++
 \begin{document}
-% \begin{titlepage}
-%     \centering
-%     \vspace*{2cm} % Adjust vertical spacing
+\begin{titlepage}
+    \centering
+    \vspace*{2cm} % Adjust vertical spacing
     
-%     % Title
-%     \Huge {MEC E 301 \\Lab 1: Dimensional Measurement} \\
-%     \vspace{1cm} % Adjust vertical spacing
+    % Title
+    \Huge {MEC E 539 \\Assignment 4: Laminar flow Around a Square Object} \\
+    \vspace{1cm} % Adjust vertical spacing
     
-%     % Author
-%     \Large by: Alex Diep \\
-%     \vspace{1cm} % Adjust vertical spacing
+    % Author
+    \Large by: Alex Diep \\
+    \vspace{1cm} % Adjust vertical spacing
 
-%     % Date
-%     \Large Date: September 19, 2023 \\ % or manually specify a date
-%     \vspace{4cm} % Adjust vertical spacing
+    % Date
+    \Large Date: March 28, 2023 \\ % or manually specify a date
+    \vspace{4cm} % Adjust vertical spacing
 
-%     % CCID and Student ID in smtaller font
-%     \normalsize CCID: abdiep \\
-%     \normalsize Student ID: 1664334 \\ 
-%     \normalsize Section: D21 \\
+    % CCID and Student ID in smtaller font
+    \normalsize CCID: abdiep \\
+    \normalsize Student ID: 1664334 \\ 
+    %\normalsize Section: D21 \\
     
-%     \vfill % Fill vertical space
+    \vfill % Fill vertical space
     
-%     % Additional content (e.g., university logo or other information)
+    % Additional content (e.g., university logo or other information)
     
-% \end{titlepage}
+\end{titlepage}
+
+% TOC
+\pagenumbering{gobble}
+\pagenumbering{roman}
+% Table of Contents (Hyperlinks set to locally black)
+{
+    \hypersetup{hidelinks}
+    \tableofcontents
+}
+\newpage
+{
+    \hypersetup{linkcolor=black}
+    \listoffigures
+}
+{
+    \hypersetup{linkcolor=black}
+    \listoftables
+}
+\newpage
+\pagenumbering{arabic}
 
 \input{Questions/Q1}
 \input{Questions/Q2}
 \input{Questions/Q3}
 
-% \newpage
-% %\bibliographystyle{IEEEtran}
-% %\bibliography{citations.bib}
-% %\bibliography{}
+\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{citations.bib}
 
 % \newpage
 % \appendix

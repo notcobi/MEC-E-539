@@ -67,3 +67,43 @@ plt.legend()
 
 # Save the plots
 plt.savefig(r"A4\Questions\Figures\drag_coefficient_vs_cells.png", dpi=300)
+
+# richardson error vs element size
+df = pd.read_excel(r"A4\analysis.xlsx", sheet_name="richardson")
+
+plt.figure()
+plt.plot(
+    df[df['order'] == 'exp']['x'],
+    df[df['order'] == 'exp']['y'],
+    "-ok",
+    label="Experimental",
+    markersize=6,
+    markerfacecolor="none",
+)
+plt.plot(
+    df[df['order'] == 1]['x'],
+    df[df['order'] == 1]['y'],
+    "--ok",
+    label="First Order",
+    markersize=6,
+    markerfacecolor="none",
+)
+plt.plot(
+    df[df['order'] == 2]['x'],
+    df[df['order'] == 2]['y'],
+    "-.ok",
+    label="Second Order",
+    markersize=6,
+    markerfacecolor="none",
+)
+
+# Set the title and labels. Do log-log plot
+plt.xscale("log")
+plt.yscale("log")
+plt.xlabel(r"$\Delta x$ (m)")
+plt.ylabel(r"Drag Coefficient Error")
+plt.xlim(1e-4, 1e-2)
+plt.legend()
+
+# Save the plots
+plt.savefig(r"A4\Questions\Figures\richardson_error_vs_element_size.png", dpi=300)
