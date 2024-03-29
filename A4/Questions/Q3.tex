@@ -1,2 +1,10 @@
 \section{Conclusions}
-did mesh refinement by guessing an initial element size and halving it 5 times. then drag coefficient was calcualted for each mesh as well as contours and streamlines to view the flow characteristics. mesh iondependece was performed. then convergence was calcualted and tested to see hte order of convergence which should've been second order since second order mthods were used but that was not the case 
+The results of the study found the drag coefficient on the square at Re$=60$ for a mesh size of 0.3125 mm (613378 elements) to be $C_d = 2.5557$. This was compared to another study at Re$=20$ which found $C_d = 1.5657$. The relative error was found to be 63.1\%. The likely reason for this discrepancy is the difference in Reynolds number. The drag coefficient is expected to decrease with increasing Reynolds number, which is consistent with the observed results. An additional simulation at Re$=60$ with grid 5 was conducted and found $C_d = 1.6962$, which is closer to the expected value. 
+
+The order of convergence was found to be 2.27, which is higher than the expected value of 2. This discrepancy may be due to the influence of other factors such as numerical errors, solver settings, or mesh quality. Further investigation is needed to identify the source of this discrepancy and improve the accuracy of the simulations.
+
+Richardson extrapolation was used to estimate the drag coefficient at Re$=60$ with an infinite number of elements. The estimated value was $C_d = 2.5537$, which is within 4.7\% of grid 3. 
+
+The computation time to mesh the geometry grew exponentially with the number of elements. The time taken to mesh grid 5 was 1 hour on my peanut laptop, which was painful. The limitations of computer hardware and software were evident in this study, highlighting the need to balance computational resources with simulation accuracy.
+
+Past grid 3, the drag coefficient was sufficiently accurate, and further mesh refinement would be unnecessary unless higher accuracy is required. A mesh with similar qualities to grid 3 will likely be the baseline mesh for future studies. It provides a good balance between accuracy and computational cost, making it suitable for most applications.

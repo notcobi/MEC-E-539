@@ -1,6 +1,6 @@
 \section{Results analyses}
 \subsection{Convergence of Simulations}
-The residuals had a convergence criteria of $10^{-5}$. For all gridsl, the residuals converged before the maximum number of iterations (1000) was reached. The drag coefficient reached a steady value in all grids. Figures \ref{fig:residuals_grid_1} to \ref{fig:velocity_profile_grid_5} show the residuals, drag coefficient, and velocity profile for each grid.
+The residuals had a convergence criteria of $10^{-5}$. For all grids, the residuals converged before the maximum number of iterations (1000) was reached. The drag coefficient reached a steady value in all grids. Figures \ref{fig:residuals_grid_1} to \ref{fig:velocity_profile_grid_5} show the residuals, drag coefficient, and velocity profile for each grid.
 \begin{table}[h]
     \centering
     \caption{Grid Convergence}
@@ -9,11 +9,11 @@ The residuals had a convergence criteria of $10^{-5}$. For all gridsl, the resid
         \toprule
         Grid & Iterations & Drag Force \\
         \midrule
-        1 & 57 & $2.51 \times 10^{-5}$ \\
-        2 & 53 & $2.18 \times 10^{-5}$ \\
-        3 & 51 & $2.08 \times 10^{-5}$ \\
-        4 & 51 & $2.05 \times 10^{-5}$ \\
-        5 & 52 & $2.03 \times 10^{-5}$ \\
+        1 & 57 & $2.513 \times 10^{-5}$ \\
+        2 & 53 & $2.182 \times 10^{-5}$ \\
+        3 & 51 & $2.079 \times 10^{-5}$ \\
+        4 & 51 & $2.050 \times 10^{-5}$ \\
+        5 & 52 & $2.045 \times 10^{-5}$ \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -187,7 +187,7 @@ The vortex length and drag coefficient are summarized in Table \ref{tab:vortex_l
         2 & 0.0181 & 2.7280 \\
         3 & 0.0186 & 2.5984 \\
         4 & 0.0183 & 2.5630 \\
-        5 & 0.01801 & 2.5363 \\
+        5 & 0.0183 & 2.5557 \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -205,9 +205,7 @@ The drag coefficient is calculated as
 \end{align*}
 
 \subsubsection{Recirculation Length on All Grids}
-The combined plot of the velocity profile for all grids is shown in Figure \ref{fig:velocity_profile_all_grids}. Note, there is an issue with the coordinates of the line in grid 5 because the origin was defined slightly differently than grids 1-4 (by accident).
-
-Grid 1 does not really have a recirculation length, while grid 2 shows some recirculation. In Grids 3-5, the concave shape develops and becomes steady around grid 4. Grid 3 seems to capture the details of grids 4 and 5 for $\tilde{}$ 16x fewer cells.
+The combined plot of the velocity profile for all grids is shown in Figure \ref{fig:velocity_profile_all_grids}. Grid 1 does not really have a recirculation length, while grid 2 shows some recirculation. In Grids 3-5, asymptotic behavior is observed. The recirculation length seems to steady around grid 4, with grid 5 being almost indistinguishable. Grid 3 seems to capture the details of grids 4 and 5 for $\tilde{}$ 16x fewer cells.
 
 \begin{figure}[H]
     \centering
@@ -241,50 +239,62 @@ Grid 1 does not really have a recirculation length, while grid 2 shows some reci
         Grid & Vortex Length Error & Drag Coefficient Error \\
         & (\%) & (\%) \\
         \midrule
-        1 & 36.15 & 23.85 \\
-        2 & 0.50 & 7.56 \\
-        3 & 3.28 & 2.45 \\
-        4 & 1.61 & 1.05 \\
+        1 & 37.16 & 22.92 \\
+        2 & 1.09 & 6.75 \\
+        3 & 1.64 & 1.67 \\
+        4 & 0 & 0.29 \\
         5 & - & - \\
         \bottomrule
     \end{tabular}
 \end{table}
-The drag coefficient and recirculation length are plotted against the total number of cells in Figures \ref{fig:drag_coefficient_vs_cells} and \ref{fig:recirculation_length_vs_cells}. The drag coefficient and recirculation length become independent around mesh 3, with it's results being within 3\% of grid 5. The error in the vortex length and drag coefficient with respect to grid 5 is shown in Table \ref{tab:error_vortex_length_drag_coefficient}.
+The drag coefficient and recirculation length are plotted against the total number of cells in Figures \ref{fig:drag_coefficient_vs_cells} and \ref{fig:recirculation_length_vs_cells}. Asymptotic behavior is observed in both plots. Grid 3 is within 1.6\% of grid 5 for both the drag coefficient and recirculation length. The relative errors are summarized in Table \ref{tab:error_vortex_length_drag_coefficient}. 
 
 \subsection{Estimation of the Order of the Method}
 First calculate the order of the method. The order is calculated as
 \begin{align*}
     p &\approx \frac{\log\left(\frac{F_{\Delta x_4} - F_{\Delta x_3}}{F_{\Delta x_5} - F_{\Delta x_4}}\right)}{\log a } \\
-    &= \frac{\log\left(\frac{2.05 - 2.08}{2.03 - 2.05}\right)}{\log 2} \\
-    &= \boxed{0.407}
+    &= \frac{\log\left(\frac{2.050 - 2.079}{2.045 - 2.050}\right)}{\log 2} \\
+    &= \boxed{2.268}
 \end{align*}
-This is not the expected value of 2. Grid independence has not been reached then.
-
-The Richardson extrapolation is not valid since grid independence has not been reached. Regardless, calculating the Richardson extrapolation for grid 5 gives
+This is close to the expected value of 2. Therefore, the Richardson extrapolation can be used to estimate the exact drag coefficient. The error in the drag coefficient is calculated as
 \begin{align*}
     \epsilon &= \frac{C_{\Delta x_5} - C_{\Delta x_4}}{a^p - 1} \\
-    &= -0.0818
+    &= \frac{2.5557 - 2.5630}{2^{2.268} - 1} \\
+    &= -0.001923
 \end{align*}
 then,
 \begin{align*}
     C_{\text{exact}} &\approx C_{\Delta x_5} + \epsilon \\
-    &= 2.5363 - 0.0818 \\
-    &= 2.4546
+    &= 2.5557 - 0.001923 \\
+    &= \boxed{2.5537}
 \end{align*}
-The error in the drag coefficient against the element size is shown in Figure \ref{fig:richardson_error_vs_element_size}. 
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{Questions/Figures/richardson_error_vs_element_size.png}
     \caption{Error in Drag Coefficient vs. Element Size}
     \label{fig:richardson_error_vs_element_size}
 \end{figure}
-The error graph is higher than the first and second order error lines. This was expected since $p \approx 0.407$, which suggests low order convergence.
+The error in the drag coefficient against the element size is shown in Figure \ref{fig:richardson_error_vs_element_size}. The experimental error decreases faster than the first and second order lines. This is consistent with the calculated order of the method being greater than 2. The data points from the experimental order and the second order are nearly coincident for the first 4 grids. 
 
-It would be expected that $1 < p_{\text{exp}} < 2$ since a second order scheme was used (not exactly 2 due to meshing impurities). For unknown reasons, this was not achieved. Further work would be needed to determine why the expected order was not achieved.
+The order of convergence being higher than 2 is likely due to some phenomena in the meshing process that is not accounted for in the theoretical order of the method. Further work could be performed to determine the exact cause of the higher order of convergence.
 
 \subsection{Validation of the Results}
-From another study, the drag coefficient was found to be  1.5657 \cite{paper} at a Reynolds number of 60. The drag coefficient was found to be 2.5363 at a Reynolds number of 20, which is the same order of magnitude. The relative error is then
+From another study, the drag coefficient was found to be 1.5657 at a Reynolds number of 60 \cite{paper}. The drag coefficient was found to be 2.5537 at a Reynolds number of 20, which is the same order of magnitude. The relative error is then
 \begin{align*}
-    \text{Relative Error} &= \frac{2.5363 - 1.5657}{1.5657} \times 100\% \\
-    &= \boxed{61.99\%}
+    \text{Relative Error} &= \frac{2.5537 - 1.5657}{1.5657} \\
+    &= \boxed{63.1\%}
 \end{align*}
+This is a large error, but the Reynolds number is three times smaller than the Reynolds number in the other study. Since Reynolds number is low, this can be approximated as Stokes flow. Since density vanishes in Stokes flow, it can be shown from Buckingham Pi theorem that drag is a function of speed, length, and viscosity. Written mathematically, 
+\begin{align*}
+    F_d &= C_1\mu U_\infty D
+\end{align*}
+where $C_1$ is a constant dependent on the geometry. The drag coefficient is then
+\begin{align*}
+    C_d &= \frac{2F_d}{\rho U_\infty^2 D} \\
+    &= \frac{2 C_1 \mu U_\infty D}{\rho U_\infty^2 D} \\
+    &= \boxed{\frac{2 C_1}{\text{Re}}}
+\end{align*}
+Thus, the drag coefficient is inversely proportional to the Reynolds number in Stokes flow. It is reasonable that the drag coefficient would be larger at a lower Reynolds number. The results are within the same order of magnitude, so the results are reasonable.
+\\\\
+\noindent \textbf{Note:} I reran the simulation on grid 5 with Re = 60 and found the drag coefficient to be 1.6962, which is within 8.3\% of the other study. This suggests that the error in the original simulation is due to the Reynolds number difference.

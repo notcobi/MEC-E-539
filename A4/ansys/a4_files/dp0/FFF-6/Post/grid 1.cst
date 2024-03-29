@@ -1,8 +1,8 @@
-# State file created:  2024/03/27 08:41:41
-# CFX-23.2
+# State file created:  2024/03/28 18:35:06
+# CFX-24.1
 
 CALCULATOR:
-  Case Name = Case grid 4
+  Case Name = Case grid 5
   Function = area
   Verbose = Off
 END
@@ -119,7 +119,7 @@ CHART:x vel along line
     CHART LINE:Chart Line 1
       Auto Chart Line Colour = On
       Auto Chart Symbol Colour = On
-      Case Name = Case grid 4
+      Case Name = Case grid 5
       Category Values = 0
       Chart FFT Line Type = Bars
       Chart Line Colour = 1.0, 0.0, 0.0
@@ -248,18 +248,18 @@ CONTOUR:u
   END
 END
 DATA READER:
-  Active Case Name = Case grid 4
+  Active Case Name = Case grid 5
   Append Results = False
   Apply X Offset = false
   Apply Y Offset = false
   Apply Z Offset = false
   Clear All Objects = False
   Construct Variables From Fourier Coefficients = True
-  Current Case List = Case grid 4
+  Current Case List = Case grid 5
   Current Case Name = C:\Users\Alex\Documents\LaTeX\MEC E 539\A4\ansys\\
-a4_files\dp0\FFF-4\Fluent\FFF-4.1-1-00051.dat.h5
+a4_files\dp0\FFF-6\Fluent\FFF-6.1-1-00051.dat.h5
   Current Results File = C:\Users\Alex\Documents\LaTeX\MEC E 539\A4\ansys\\
-a4_files\dp0\FFF-4\Fluent\FFF-4.1-1-00051.dat.h5
+a4_files\dp0\FFF-6\Fluent\FFF-6.1-1-00051.dat.h5
   Current Timestep = -1
   Current Timevalue = 0
   Edit Case Names = false
@@ -284,12 +284,12 @@ a4_files\dp0\FFF-4\Fluent\FFF-4.1-1-00051.dat.h5
   Timestep Match Criterion = Same Step
   Timestep Sync Mode = By Time Value
   Timevalue Match Criterion = Same Value
-  CASE:Case grid 4
+  CASE:Case grid 5
     Construct Variables From Fourier Coefficients = True
     Current Case Name = C:\Users\Alex\Documents\LaTeX\MEC E 539\A4\ansys\\
-a4_files\dp0\FFF-4\Fluent\FFF-4.1-1-00051.dat.h5
+a4_files\dp0\FFF-6\Fluent\FFF-6.1-1-00051.dat.h5
     Current Results File = C:\Users\Alex\Documents\LaTeX\MEC E 539\A4\ansys\\
-a4_files\dp0\FFF-4\Fluent\FFF-4.1-1-00051.dat.h5
+a4_files\dp0\FFF-6\Fluent\FFF-6.1-1-00051.dat.h5
     Current Timestep = -1
     Current Timevalue = 0
     File Angle Units = rad
@@ -577,7 +577,7 @@ DEFAULT LEGEND:Default Legend View 1
   Legend Aspect = 0.07
   Legend Format = %10.3e
   Legend Orientation = Vertical
-  Legend Plot = /VECTOR:u streamline
+  Legend Plot = /STREAMLINE:u streamline sym 2
   Legend Position = 0.02, 0.15
   Legend Resolution = 256
   Legend Shading = Smooth
@@ -600,7 +600,7 @@ DEFAULT LEGEND:Default Legend View 2
   Legend Aspect = 0.07
   Legend Format = %10.3e
   Legend Orientation = Vertical
-  Legend Plot = /LINE:Line 1
+  Legend Plot = /STREAMLINE:u streamline sym 2
   Legend Position = 0.02, 0.15
   Legend Resolution = 256
   Legend Shading = Smooth
@@ -623,7 +623,7 @@ DEFAULT LEGEND:Default Legend View 3
   Legend Aspect = 0.07
   Legend Format = %10.3e
   Legend Orientation = Vertical
-  Legend Plot = /LINE:Line 1
+  Legend Plot = /STREAMLINE:u streamline sym 2
   Legend Position = 0.02, 0.15
   Legend Resolution = 256
   Legend Shading = Smooth
@@ -646,7 +646,7 @@ DEFAULT LEGEND:Default Legend View 4
   Legend Aspect = 0.07
   Legend Format = %10.3e
   Legend Orientation = Vertical
-  Legend Plot = /LINE:Line 1
+  Legend Plot = /STREAMLINE:u streamline sym 2
   Legend Position = 0.02, 0.15
   Legend Resolution = 256
   Legend Shading = Smooth
@@ -678,7 +678,7 @@ EXPORT:
   Export Chart Name = x vel along line
   Export Connectivity = false
   Export Coord Frame = Global
-  Export File = C:/Users/Alex/Documents/LaTeX/MEC E 539/A4/grid 4 recirc.csv
+  Export File = C:/Users/Alex/Documents/LaTeX/MEC E 539/A4/grid 5 recirc.csv
   Export Geometry = true
   Export Node Numbers = false
   Export Null Data = True
@@ -901,7 +901,27 @@ END
 SCALAR VARIABLE:Normal Z
   Boundary Values = Conservative
 END
+SCALAR VARIABLE:Periodic Time on u streamline sym 1
+  Boundary Values = Conservative
+  Expression = Time on u streamline sym 1
+END
+SCALAR VARIABLE:Periodic Time on u streamline sym 2
+  Boundary Values = Conservative
+  Expression = Time on u streamline sym 2
+END
 SCALAR VARIABLE:Pressure
+  Boundary Values = Conservative
+END
+SCALAR VARIABLE:Streamline Number on u streamline sym 1
+  Boundary Values = Conservative
+END
+SCALAR VARIABLE:Streamline Number on u streamline sym 2
+  Boundary Values = Conservative
+END
+SCALAR VARIABLE:Time on u streamline sym 1
+  Boundary Values = Conservative
+END
+SCALAR VARIABLE:Time on u streamline sym 2
   Boundary Values = Conservative
 END
 SCALAR VARIABLE:Velocity u
@@ -1026,6 +1046,172 @@ SCALAR VARIABLE:Y
 END
 SCALAR VARIABLE:Z
   Boundary Values = Conservative
+END
+STREAMLINE:u streamline sym 1
+  Absolute Tolerance = 0.0 [m]
+  Add Sample Vertex Normals = Off
+  Apply Instancing Transform = On
+  Colour = 0.75, 0.75, 0.75
+  Colour Map = Default Colour Map
+  Colour Mode = Use Plot Variable
+  Colour Scale = Linear
+  Colour Variable = Velocity
+  Colour Variable Boundary Values = Conservative
+  Cross Periodics = On
+  Culling Mode = No Culling
+  Domain List = /DOMAIN GROUP:All Domains
+  Draw Contours = Off
+  Draw Faces = On
+  Draw Lines = Off
+  Draw Streams = On
+  Draw Symbols = Off
+  Grid Tolerance = 0.01
+  Instancing Transform = /DEFAULT INSTANCE TRANSFORM:Default Transform
+  Lighting = On
+  Line Colour = 0, 0, 0
+  Line Width = 1
+  Location List = symmetry 1
+  Locator Sampling Method = Equally Spaced
+  Max = 0.0 [m s^-1]
+  Maximum Number of Items = 25
+  Min = 0.0 [m s^-1]
+  Number of Contours = 11
+  Number of Samples = 500
+  Number of Sides = 8
+  Random Seed = 1
+  Range = Global
+  Reduction Factor = 1.0
+  Reduction or Max Number = Max Number
+  Sample Spacing = 0.1
+  Sampling Accuracy = High
+  Sampling Aspect Ratio = 1
+  Sampling Grid Angle = 0 [degree]
+  Seed Point Type = Equally Spaced Samples
+  Simplify Geometry = Off
+  Specular Lighting = On
+  Stream Drawing Mode = Line
+  Stream Initial Direction = 0 , 0 , 0
+  Stream Size = 1.0
+  Stream Symbol = Ball
+  Streamline Direction = Forward
+  Streamline Maximum Periods = 20
+  Streamline Maximum Segments = 10000
+  Streamline Maximum Time = 0.0 [s]
+  Streamline Periodic Time Interval = -1 [s]
+  Streamline Solver Type = RungeKutta2
+  Streamline Type = 3D Streamline
+  Streamline Width = 2
+  Surface Drawing = Smooth Shading
+  Surface Streamline Direction = Forward and Backward
+  Symbol Size = 1.0
+  Symbol Start Time = 10.0 [s]
+  Symbol Stop Time = -10.0 [s]
+  Symbol Time Interval = 1.0 [s]
+  Tolerance Mode = Grid Relative
+  Transparency = 0.0
+  Variable = Velocity
+  Variable Boundary Values = Conservative
+  Visibility = Off
+  OBJECT VIEW TRANSFORM:
+    Apply Reflection = Off
+    Apply Rotation = Off
+    Apply Scale = Off
+    Apply Translation = Off
+    Principal Axis = Z
+    Reflection Plane Option = XY Plane
+    Rotation Angle = 0.0 [degree]
+    Rotation Axis From = 0 [m], 0 [m], 0 [m]
+    Rotation Axis To = 0 [m], 0 [m], 0 [m]
+    Rotation Axis Type = Principal Axis
+    Scale Vector = 1 , 1 , 1
+    Translation Vector = 0 [m], 0 [m], 0 [m]
+    X = 0.0 [m]
+    Y = 0.0 [m]
+    Z = 0.0 [m]
+  END
+END
+STREAMLINE:u streamline sym 2
+  Absolute Tolerance = 0.0 [m]
+  Add Sample Vertex Normals = Off
+  Apply Instancing Transform = On
+  Colour = 0.75, 0.75, 0.75
+  Colour Map = Default Colour Map
+  Colour Mode = Use Plot Variable
+  Colour Scale = Linear
+  Colour Variable = Velocity
+  Colour Variable Boundary Values = Conservative
+  Cross Periodics = On
+  Culling Mode = No Culling
+  Domain List = All Domains
+  Draw Contours = Off
+  Draw Faces = On
+  Draw Lines = Off
+  Draw Streams = On
+  Draw Symbols = Off
+  Grid Tolerance = 0.01
+  Instancing Transform = /DEFAULT INSTANCE TRANSFORM:Default Transform
+  Lighting = On
+  Line Colour = 0, 0, 0
+  Line Width = 1
+  Location List = symmetry 2
+  Locator Sampling Method = Equally Spaced
+  Max = 0.0 [m s^-1]
+  Maximum Number of Items = 500
+  Min = 0.0 [m s^-1]
+  Number of Contours = 11
+  Number of Samples = 1000
+  Number of Sides = 8
+  Random Seed = 1
+  Range = Global
+  Reduction Factor = 1.0
+  Reduction or Max Number = Max Number
+  Sample Spacing = 0.1
+  Sampling Accuracy = High
+  Sampling Aspect Ratio = 1
+  Sampling Grid Angle = 0 [degree]
+  Seed Point Type = Equally Spaced Samples
+  Simplify Geometry = Off
+  Specular Lighting = On
+  Stream Drawing Mode = Line
+  Stream Initial Direction = 0 , 0 , 0
+  Stream Size = 1.0
+  Stream Symbol = Ball
+  Streamline Direction = Forward
+  Streamline Maximum Periods = 20
+  Streamline Maximum Segments = 10000
+  Streamline Maximum Time = 0.0 [s]
+  Streamline Periodic Time Interval = -1 [s]
+  Streamline Solver Type = RungeKutta2
+  Streamline Type = Surface Streamline
+  Streamline Width = 2
+  Surface Drawing = Smooth Shading
+  Surface Streamline Direction = Forward and Backward
+  Symbol Size = 1.0
+  Symbol Start Time = 10.0 [s]
+  Symbol Stop Time = -10.0 [s]
+  Symbol Time Interval = 1.0 [s]
+  Tolerance Mode = Grid Relative
+  Transparency = 0.0
+  Variable = Velocity
+  Variable Boundary Values = Conservative
+  Visibility = On
+  OBJECT VIEW TRANSFORM:
+    Apply Reflection = Off
+    Apply Rotation = Off
+    Apply Scale = Off
+    Apply Translation = Off
+    Principal Axis = Z
+    Reflection Plane Option = XY Plane
+    Rotation Angle = 0.0 [degree]
+    Rotation Axis From = 0 [m], 0 [m], 0 [m]
+    Rotation Axis To = 0 [m], 0 [m], 0 [m]
+    Rotation Axis Type = Principal Axis
+    Scale Vector = 1 , 1 , 1
+    Translation Vector = 0 [m], 0 [m], 0 [m]
+    X = 0.0 [m]
+    Y = 0.0 [m]
+    Z = 0.0 [m]
+  END
 END
 SYMBOL CONTROL:
   Symbol Size = 1
@@ -1550,67 +1736,6 @@ END
 VECTOR VARIABLE:Wall Shear
   Boundary Values = Conservative
 END
-VECTOR:u streamline
-  Add Sample Vertex Normals = On
-  Apply Instancing Transform = On
-  Colour = 0.75, 0.75, 0.75
-  Colour Map = Default Colour Map
-  Colour Mode = Use Plot Variable
-  Colour Scale = Linear
-  Colour Variable = Velocity
-  Colour Variable Boundary Values = Conservative
-  Coord Frame = Global
-  Culling Mode = No Culling
-  Direction = X
-  Domain List = /DOMAIN GROUP:All Domains
-  Draw Faces = On
-  Draw Lines = Off
-  Instancing Transform = /DEFAULT INSTANCE TRANSFORM:Default Transform
-  Lighting = On
-  Line Width = 1
-  Location List = symmetry 2
-  Locator Sampling Method = Vertex
-  Max = 0.0 [m s^-1]
-  Maximum Number of Items = 100
-  Min = 0.0 [m s^-1]
-  Normalized = Off
-  Number of Samples = 100
-  Projection Type = None
-  Random Seed = 1
-  Range = Global
-  Reduction Factor = 20
-  Reduction or Max Number = Reduction
-  Sample Spacing = 0.1
-  Sampling Accuracy = High
-  Sampling Aspect Ratio = 1
-  Sampling Grid Angle = 0 [degree]
-  Specular Lighting = On
-  Surface Drawing = Smooth Shading
-  Surface Sampling = Off
-  Symbol = Line Arrow
-  Symbol Size = 1.0
-  Transparency = 0.0
-  Variable = Velocity
-  Variable Boundary Values = Conservative
-  Visibility = On
-  OBJECT VIEW TRANSFORM:
-    Apply Reflection = Off
-    Apply Rotation = Off
-    Apply Scale = Off
-    Apply Translation = Off
-    Principal Axis = Z
-    Reflection Plane Option = XY Plane
-    Rotation Angle = 0.0 [degree]
-    Rotation Axis From = 0 [m], 0 [m], 0 [m]
-    Rotation Axis To = 0 [m], 0 [m], 0 [m]
-    Rotation Axis Type = Principal Axis
-    Scale Vector = 1 , 1 , 1
-    Translation Vector = 0 [m], 0 [m], 0 [m]
-    X = 0.0 [m]
-    Y = 0.0 [m]
-    Z = 0.0 [m]
-  END
-END
 VIEW:View 1
   Angular Coord Shift = 0.0
   Auto Center = false
@@ -1624,17 +1749,17 @@ VIEW:View 1
   Is A Figure = false
   Light Angle = 50, 110
   Object Visibility List = /DEFAULT LEGEND:Default Legend View 1,/LINE:Line 1,/\
-VECTOR:u streamline,/WIREFRAME:Wireframe
+STREAMLINE:u streamline sym 2,/WIREFRAME:Wireframe
   Projection = Orthographic
   Ruler Visibility = true
   Standard View = Isometric Y
   CAMERA:
     Option = Pivot Point and Quaternion
-    Pan = 0,0
+    Pan = -0.00366452,0.0227258
     Pivot Point = 0.0170208,0.0200266,-0.000996038
     Rotation = -90, 0, 0
     Rotation Quaternion = 0,0,0,1
-    Scale = 8.73211
+    Scale = 14.4392
     Send To Viewer = True
   END
 END
@@ -1711,11 +1836,11 @@ WIREFRAME:Wireframe
   Standard View = Isometric Y
   CAMERA:
     Option = Pivot Point and Quaternion
-    Pan = 0,0
-    Pivot Point = 0,0,0
+    Pan = 0, 0
+    Pivot Point = 0, 0, 0
     Rotation = -90, 0, 0
-    Rotation Quaternion = 0.279848,-0.364705,-0.115917,0.880476
-    Scale = 1
+    Rotation Quaternion = 0.279848, -0.364705, -0.115917, 0.880476
+    Scale = 1.24163
     Send To Viewer = True
   END
 END
